@@ -7,14 +7,11 @@ import 'package:notesapp/app/home.dart';
 import '../../components/customtextform.dart';
 import '../../components/small_button.dart';
 
-class Login extends StatefulWidget {
+class Login extends StatelessWidget {
   Login({Key? key}) : super(key: key);
-  GlobalKey<FormState> formstate = GlobalKey();
-  @override
-  State<Login> createState() => _LoginState();
-}
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
 
-class _LoginState extends State<Login> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,6 +31,7 @@ class _LoginState extends State<Login> {
                     color: Colors.green),
               ),
               CustomTextForm(
+                mycontroller: username,
                 hinttype: 'Type Your Username',
                 iname: Icon(Icons.person),
               ),
@@ -41,6 +39,7 @@ class _LoginState extends State<Login> {
                 height: 8,
               ),
               CustomTextForm(
+                mycontroller: password,
                 hinttype: 'Type Your Email',
                 iname: Icon(Icons.email_outlined),
               ),
@@ -59,10 +58,8 @@ class _LoginState extends State<Login> {
               smallbutton(
                   txt: "login ",
                   onPreased: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Login()));
-                    });
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Login()));
                   }),
               SizedBox(
                 height: 6,
@@ -70,10 +67,8 @@ class _LoginState extends State<Login> {
               smallbutton(
                   txt: "Signup ",
                   onPreased: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Signup()));
-                    });
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Signup()));
                   }),
             ],
           ))
