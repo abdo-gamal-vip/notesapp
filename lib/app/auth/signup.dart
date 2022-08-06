@@ -23,20 +23,24 @@ class _SignupState extends State<Signup> {
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
-
+  bool isLoading = true;
   Crud _crud = Crud();
 
   signup() async {
     try {
+      isLoading = true;
+      setState(() {});
       var response = await _crud.postRequset(Signuplink, {
         "username": username.text,
         "email": email.text,
         "password": password.text,
       });
+      isLoading = false;
+
+      setState(() {});
       if (response['status'] == "success") {
         print("sucess");
-        Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => Home()));
+        Navigator.of(context).pushNamedAndRemoveUntil("home", (route) => false);
       } else {
         print("signup failled");
       }
@@ -46,83 +50,86 @@ class _SignupState extends State<Signup> {
   }
 
   @override
-  void initState() {
-    signup();
-    super.initState();
-  }
-
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        padding: EdgeInsets.all(5),
-        child: ListView(children: [
-          Form(
-              key: formkey,
-              child: Column(
-                children: [
-                  Image.network(
-                      "https://media.mktg.workday.com/is/image/workday/illustration-people-login?fmt=png-alpha&wid=1000"),
-                  Text(
-                    "SIGNUP",
-                    style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
-                  ),
-                  CustomTextForm(
-                    mycontroller: username,
-                    hinttype: 'Type Your Username',
-                    iname: Icon(Icons.person),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  CustomTextForm(
-                    mycontroller: email,
-                    hinttype: 'Type Your Email',
-                    iname: Icon(Icons.email_outlined),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  CustomTextForm(
-                    mycontroller: password,
-                    hinttype: 'Type Your Password',
-                    iname: Icon(Icons.password_outlined),
-                  ),
-                  SizedBox(
-                    height: 8,
-                  ),
-                  smallbutton(
-                      txt: "Create Account",
-                      onPreased: () {
-                        setState(() {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Login()));
-                        });
-                      }),
-                  smallbutton(
-                      txt: "login ",
-                      onPreased: () {
-                        setState(() {
-                          Navigator.push(context,
-                              MaterialPageRoute(builder: (context) => Login()));
-                        });
-                      }),
-                  SizedBox(
-                    height: 6,
-                  ),
-                  smallbutton(
-                      txt: "signup ",
-                      onPreased: () {
-                        setState(() {
-                          signup();
-                        });
-                      }),
-                ],
-              ))
-        ]),
-      ),
+      body: isLoading == false
+          ? (Center(
+              child: CircularProgressIndicator(),
+            ))
+          : Container(
+              padding: EdgeInsets.all(5),
+              child: ListView(children: [
+                Form(
+                    key: formkey,
+                    child: Column(
+                      children: [
+                        Image.network(
+                            "https://media.mktg.workday.com/is/image/workday/illustration-people-login?fmt=png-alpha&wid=1000"),
+                        Text(
+                          "SIGNUP",
+                          style: TextStyle(
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.green),
+                        ),
+                        CustomTextForm(
+                          mycontroller: username,
+                          hinttype: 'Type Your Username',
+                          iname: Icon(Icons.person),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        CustomTextForm(
+                          mycontroller: email,
+                          hinttype: 'Type Your Email',
+                          iname: Icon(Icons.email_outlined),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        CustomTextForm(
+                          mycontroller: password,
+                          hinttype: 'Type Your Password',
+                          iname: Icon(Icons.password_outlined),
+                        ),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        smallbutton(
+                            txt: "Create Account",
+                            onPreased: () {
+                              setState(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Login()));
+                              });
+                            }),
+                        smallbutton(
+                            txt: "login ",
+                            onPreased: () {
+                              setState(() {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => Login()));
+                              });
+                            }),
+                        SizedBox(
+                          height: 6,
+                        ),
+                        smallbutton(
+                            txt: "signup ",
+                            onPreased: () {
+                              setState(() {
+                                signup();
+                              });
+                            }),
+                      ],
+                    ))
+              ]),
+            ),
     );
   }
 }

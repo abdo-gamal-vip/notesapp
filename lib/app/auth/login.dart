@@ -67,7 +67,7 @@ class Login extends StatelessWidget {
               smallbutton(
                   txt: "Signup ",
                   onPreased: () {
-                    Navigator.push(context,
+                    Navigator.of(context).push(
                         MaterialPageRoute(builder: (context) => Signup()));
                   }),
             ],
