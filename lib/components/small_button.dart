@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/app/auth/signup.dart';
+import 'package:notesapp/app/auth/login.dart';
 
 class smallbutton extends StatelessWidget {
   smallbutton({Key? key, required this.txt, required this.onPreased})
