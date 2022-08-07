@@ -31,6 +31,7 @@ class Login extends StatelessWidget {
                     color: Colors.green),
               ),
               CustomTextForm(
+                valid: (val) {},
                 mycontroller: username,
                 hinttype: 'Type Your Username',
                 iname: Icon(Icons.person),
@@ -39,6 +40,7 @@ class Login extends StatelessWidget {
                 height: 8,
               ),
               CustomTextForm(
+                valid: (val) {},
                 mycontroller: password,
                 hinttype: 'Type Your Email',
                 iname: Icon(Icons.email_outlined),

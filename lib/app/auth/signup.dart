@@ -1,3 +1,4 @@
+import 'dart:ffi';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -7,6 +8,7 @@ import 'package:http/http.dart';
 import 'package:notesapp/app/auth/login.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/components/valid.dart';
 import 'package:notesapp/constant/linkapi.dart';
 
 import '../../components/customtextform.dart';
@@ -27,25 +29,28 @@ class _SignupState extends State<Signup> {
   Crud _crud = Crud();
 
   signup() async {
-    try {
-      isLoading = true;
-      setState(() {});
-      var response = await _crud.postRequset(Signuplink, {
-        "username": username.text,
-        "email": email.text,
-        "password": password.text,
-      });
-      isLoading = false;
+    if (formkey.currentState!.validate()) {
+      try {
+        isLoading = true;
+        setState(() {});
+        var response = await _crud.postRequset(Signuplink, {
+          "username": username.text,
+          "email": email.text,
+          "password": password.text,
+        });
+        isLoading = false;
 
-      setState(() {});
-      if (response['status'] == "success") {
-        print("sucess");
-        Navigator.of(context).pushNamedAndRemoveUntil("home", (route) => false);
-      } else {
-        print("signup failled");
+        setState(() {});
+        if (response['status'] == "success") {
+          print("sucess");
+          Navigator.of(context)
+              .pushNamedAndRemoveUntil("home", (route) => false);
+        } else {
+          print("signup failled");
+        }
+      } catch (e) {
+        print("signup fail $e");
       }
-    } catch (e) {
-      print("signup fail $e");
     }
   }
 
@@ -73,6 +78,9 @@ class _SignupState extends State<Signup> {
                               color: Colors.green),
                         ),
                         CustomTextForm(
+                          valid: (val) {
+                            return validInput(val!, 4, 20);
+                          },
                           mycontroller: username,
                           hinttype: 'Type Your Username',
                           iname: Icon(Icons.person),
@@ -81,6 +89,12 @@ class _SignupState extends State<Signup> {
                           height: 8,
                         ),
                         CustomTextForm(
+                          valid: (val) {
+                            return emailValid(
+                              val!,
+                              validInput(val, 7, 30),
+                            );
+                          },
                           mycontroller: email,
                           hinttype: 'Type Your Email',
                           iname: Icon(Icons.email_outlined),
@@ -89,6 +103,9 @@ class _SignupState extends State<Signup> {
                           height: 8,
                         ),
                         CustomTextForm(
+                          valid: (val) {
+                            return validInput(val!, 6, 30);
+                          },
                           mycontroller: password,
                           hinttype: 'Type Your Password',
                           iname: Icon(Icons.password_outlined),
