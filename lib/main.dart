@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        initialRoute: shardprefs.getString("id") == null ? 'login' : 'home',
+        initialRoute: shardprefs.getString("u_id") == null ? 'login' : 'home',
         routes: {
           'home': (context) => Home(),
           'login': (context) => Login(),

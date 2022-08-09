@@ -41,7 +41,7 @@ class _LoginState extends State<Login> {
         setState(() {});
 
         if (response['status'] == "success") {
-          shardprefs.setString("id", response["data"]["u_id"].toString());
+          shardprefs.setString("u_id", response["data"]["u_id"].toString());
           shardprefs.setString("username", response["data"]["username"]);
           shardprefs.setString("password", response["data"]["password"]);
           Navigator.of(context)
