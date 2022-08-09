@@ -58,30 +58,41 @@ class _HomeState extends State<Home> with Crud {
       ),
       body: Container(
         padding: const EdgeInsets.all(5),
-        child: ListView(
-          children: [
-            FutureBuilder(
-              future: addNote(),
-              builder: (BuildContext context, AsyncSnapshot snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: snapshot.data["data"].length,
-                      itemBuilder: (context, index) {
-                        return Text(
-                            "${snapshot.data["data"][index]["n_title"]}");
-                      });
-                }
-                if (snapshot.connectionState == ConnectionState.waiting) ;
-                {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
-            )
-          ],
+        child: RefreshIndicator(
+          onRefresh: () async {
+            setState(() {
+              addNote();
+            });
+          },
+          child: ListView(
+            children: [
+              FutureBuilder(
+                future: addNote(),
+                builder: (BuildContext context, AsyncSnapshot snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                        shrinkWrap: true,
+                        physics: NeverScrollableScrollPhysics(),
+                        itemCount: snapshot.data["data"].length,
+                        itemBuilder: (context, index) {
+                          return CardNotes(
+                              content:
+                                  "${snapshot.data["data"][index]["n_content"]}",
+                              ontap: () {},
+                              title:
+                                  "${snapshot.data["data"][index]["n_title"]}");
+                        });
+                  }
+                  if (snapshot.connectionState == ConnectionState.waiting) ;
+                  {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              )
+            ],
+          ),
         ),
       ),
     );
