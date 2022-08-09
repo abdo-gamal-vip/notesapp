@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:notesapp/main.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -16,42 +17,34 @@ class _HomeState extends State<Home> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.teal,
         onPressed: () {},
-        child: Icon(Icons.add),
+        child: IconButton(
+          onPressed: () {},
+          icon: Icon(Icons.add),
+        ),
       ),
       appBar: AppBar(
+        actions: [
+          Padding(
+            padding: EdgeInsets.all(8.0),
+            child: IconButton(
+              icon: Icon(Icons.exit_to_app),
+              onPressed: () {
+                setState(() {
+                  shardprefs.clear();
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil("login", (route) => false);
+                });
+              },
+            ),
+          )
+        ],
         backgroundColor: Colors.teal[400],
-        title: Text("SMART NOTE"),
+        title: const Text("SMART NOTE"),
       ),
       body: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: ListView(
-          children: [
-            Card(
-              child: Row(
-                children: [
-                  Expanded(
-                      flex: 1,
-                      child: Image.asset(
-                        "asset/logo.png",
-                        width: 100,
-                        height: 100,
-                      )),
-                  Expanded(
-                      flex: 2,
-                      child: ListTile(
-                        title: Text(
-                          "note titles",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                        subtitle: Text(
-                          "content note",
-                          style: TextStyle(fontSize: 18),
-                        ),
-                      )),
-                ],
-              ),
-            ),
-          ],
+          children: [],
         ),
       ),
     );
