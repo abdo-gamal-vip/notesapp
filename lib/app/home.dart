@@ -6,6 +6,8 @@ import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 
+import 'noteview.dart';
+
 class Home extends StatefulWidget with Crud {
   Home({Key? key}) : super(key: key);
 
@@ -14,7 +16,7 @@ class Home extends StatefulWidget with Crud {
 }
 
 class _HomeState extends State<Home> with Crud {
-  Future addNote() async {
+  Future viewNote() async {
     var response = await postRequset(viewslink, {
       "u_id": shardprefs.getString("u_id"),
     });
@@ -23,7 +25,7 @@ class _HomeState extends State<Home> with Crud {
 
   @override
   void initState() {
-    addNote();
+    viewNote();
     super.initState();
   }
 
@@ -33,16 +35,19 @@ class _HomeState extends State<Home> with Crud {
         backgroundColor: Colors.teal,
         onPressed: () {},
         child: IconButton(
-          onPressed: () {},
-          icon: Icon(Icons.add),
+          onPressed: () {
+            Navigator.push(
+                (context), MaterialPageRoute(builder: (context) => AddView()));
+          },
+          icon: const Icon(Icons.add),
         ),
       ),
       appBar: AppBar(
         actions: [
           Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: IconButton(
-              icon: Icon(Icons.exit_to_app),
+              icon: const Icon(Icons.exit_to_app),
               onPressed: () {
                 setState(() {
                   shardprefs.clear();
@@ -61,18 +66,24 @@ class _HomeState extends State<Home> with Crud {
         child: RefreshIndicator(
           onRefresh: () async {
             setState(() {
-              addNote();
+              viewNote();
             });
           },
           child: ListView(
             children: [
               FutureBuilder(
-                future: addNote(),
+                future: viewNote(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.hasData) {
+                    if (snapshot.data['status'] == 'fail')
+                      return const Center(
+                          child: Text(
+                        "لا يوجد اى ملاحظات جديده \n من فضلك ادخل ملاحظه",
+                        style: TextStyle(fontSize: 20),
+                      ));
                     return ListView.builder(
                         shrinkWrap: true,
-                        physics: NeverScrollableScrollPhysics(),
+                        physics: const NeverScrollableScrollPhysics(),
                         itemCount: snapshot.data["data"].length,
                         itemBuilder: (context, index) {
                           return CardNotes(
@@ -85,7 +96,7 @@ class _HomeState extends State<Home> with Crud {
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) ;
                   {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
