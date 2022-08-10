@@ -20,18 +20,20 @@ class _AddViewState extends State<AddView> with Crud {
   GlobalKey<FormState> _ckey = GlobalKey<FormState>();
   TextEditingController title = TextEditingController();
   TextEditingController content = TextEditingController();
-
+  bool isLoading = false;
   addNote() async {
-    try {
-      var response = await postRequset(addlink, {
-        "users": shardprefs.getString("u_id"),
-        "title": title.text,
-        "content": content.text,
-      });
-      print(response);
-      return response;
-    } catch (e) {
-      print(e);
+    if (_tkey.currentState!.validate() || _ckey.currentState!.validate()) {
+      try {
+        var response = await postRequset(addlink, {
+          "users": shardprefs.getString("u_id"),
+          "title": title.text,
+          "content": content.text,
+        });
+        print(response);
+        return response;
+      } catch (e) {
+        print(e);
+      }
     }
   }
 
