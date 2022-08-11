@@ -3,19 +3,20 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
 
 import '../constant/linkapi.dart';
 
-class AddView extends StatefulWidget {
-  const AddView({Key? key}) : super(key: key);
+class adddNote extends StatefulWidget {
+  const adddNote({Key? key}) : super(key: key);
 
   @override
-  State<AddView> createState() => _AddViewState();
+  State<adddNote> createState() => _adddNoteState();
 }
 
-class _AddViewState extends State<AddView> with Crud {
+class _adddNoteState extends State<adddNote> with Crud {
   GlobalKey<FormState> _tkey = GlobalKey<FormState>();
   GlobalKey<FormState> _ckey = GlobalKey<FormState>();
   TextEditingController title = TextEditingController();
@@ -130,6 +131,12 @@ class _AddViewState extends State<AddView> with Crud {
                                       setState(() {
                                         print("key");
                                         addNote();
+                                        Navigator.of(context)
+                                            .pushAndRemoveUntil(
+                                                MaterialPageRoute(
+                                                    builder: (context) =>
+                                                        Home()),
+                                                (route) => false);
                                       });
                                     },
                                     child: Text(

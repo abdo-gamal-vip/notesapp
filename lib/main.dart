@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/app/edit_note.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/auth/signup.dart';
@@ -8,6 +9,7 @@ late SharedPreferences shardprefs;
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   shardprefs = await SharedPreferences.getInstance();
+
   runApp(const MyApp());
 }
 

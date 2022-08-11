@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:notesapp/app/edit_note.dart';
 import 'package:notesapp/components/cardnote.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
+import 'package:notesapp/models/model_notes.dart';
 
-import 'noteview.dart';
+import 'add_note.dart';
 
 class Home extends StatefulWidget with Crud {
   Home({Key? key}) : super(key: key);
@@ -37,7 +39,7 @@ class _HomeState extends State<Home> with Crud {
         child: IconButton(
           onPressed: () {
             Navigator.push(
-                (context), MaterialPageRoute(builder: (context) => AddView()));
+                (context), MaterialPageRoute(builder: (context) => adddNote()));
           },
           icon: const Icon(Icons.add),
         ),
@@ -87,11 +89,16 @@ class _HomeState extends State<Home> with Crud {
                         itemCount: snapshot.data["data"].length,
                         itemBuilder: (context, index) {
                           return CardNotes(
-                              content:
-                                  "${snapshot.data["data"][index]["n_content"]}",
-                              ontap: () {},
-                              title:
-                                  "${snapshot.data["data"][index]["n_title"]}");
+                            noteModel: NotesModel.fromJson(
+                                snapshot.data["data"][index]),
+                            ontap: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => editNote(
+                                      notes: snapshot.data["data"][index])));
+                            },
+                            nn_id:
+                                snapshot.data["data"][index]["n_id"].toString(),
+                          );
                         });
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) ;
