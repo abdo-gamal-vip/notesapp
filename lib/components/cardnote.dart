@@ -16,7 +16,6 @@ class CardNotes extends StatefulWidget with Crud {
   String nn_id;
 
   void Function() ontap;
-
   @override
   State<CardNotes> createState() => _CardNotesState();
 }

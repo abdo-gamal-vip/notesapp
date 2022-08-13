@@ -1,8 +1,10 @@
+import 'dart:io';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
@@ -28,6 +30,7 @@ class _adddNoteState extends State<adddNote> with Crud {
     try {
       var response = await postRequset(addlink, {
         "users": shardprefs.getString("u_id"),
+        "file": shardprefs.getString("n_image"),
         "title": title.text,
         "content": content.text,
       });
@@ -60,7 +63,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                   ),
                   Container(
                       padding: EdgeInsets.all(5),
-                      height: 400,
+                      height: 600,
                       width: double.infinity,
                       child: Column(
                         children: [
@@ -109,6 +112,94 @@ class _adddNoteState extends State<adddNote> with Crud {
                           ),
                           SizedBox(
                             height: 10,
+                          ),
+                          MaterialButton(
+                            color: Colors.teal,
+                            onPressed: () {
+                              showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => Container(
+                                        height: 150,
+                                        width: double.infinity,
+                                        child: Column(children: [
+                                          Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Container(
+                                                alignment: Alignment.center,
+                                                height: 140,
+                                                width: 80,
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    XFile? xfile =
+                                                        await ImagePicker()
+                                                            .pickImage(
+                                                                source:
+                                                                    ImageSource
+                                                                        .gallery);
+                                                    File myfile =
+                                                        File(xfile!.path);
+                                                  },
+                                                  child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Image.asset(
+                                                        "asset/gallery.png",
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                      Text("from gallery"),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                              Container(
+                                                alignment: Alignment.center,
+                                                height: 140,
+                                                width: 80,
+                                                child: InkWell(
+                                                  onTap: () async {
+                                                    XFile? xfile =
+                                                        await ImagePicker()
+                                                            .pickImage(
+                                                                source:
+                                                                    ImageSource
+                                                                        .camera);
+                                                    File myfile =
+                                                        File(xfile!.path);
+                                                  },
+                                                  child: Column(
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Image.asset(
+                                                        "asset/camera.png",
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                      Text("from gallery"),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ]),
+                                      ));
+                            },
+                            child: Text(
+                              "Choose Image File",
+                              style:
+                                  TextStyle(fontSize: 18, color: Colors.white),
+                            ),
                           ),
                           Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
