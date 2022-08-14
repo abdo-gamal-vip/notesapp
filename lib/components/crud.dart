@@ -1,10 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import 'package:notesapp/constant/linkapi.dart';
-
 import '../main.dart';
+import 'package:path/path.dart';
 
 class Crud {
   getRequset(String url, Map<String, dynamic> map) async {
@@ -43,5 +44,28 @@ class Crud {
       return Navigator.of(context).pushReplacementNamed("home");
     }
     print("$nn_id");
+  }
+}
+
+postRequsetFile(String url, Map data, File file) async {
+  try {
+    var requset = await http.MultipartRequest("POST", Uri.parse(url));
+    var lenght = await file.length();
+    var stream = http.ByteStream(file.openRead());
+    var mulitPartFile = await http.MultipartFile("file", stream, lenght,
+        filename: basename(file.path));
+    requset.files.add(mulitPartFile);
+    data.forEach((key, value) {
+      requset.fields[key] = value;
+    });
+    var myrequest = await requset.send();
+    var response = await http.Response.fromStream(myrequest);
+    if (myrequest.statusCode == 200) {
+      return jsonDecode(response.body);
+    } else {
+      print("error ${myrequest.statusCode}");
+    }
+  } catch (e) {
+    print("catch error $e");
   }
 }
