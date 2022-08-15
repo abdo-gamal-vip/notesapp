@@ -41,7 +41,7 @@ class Crud {
       "n_id": nn_id,
     });
     if (response["status"] == "success") {
-      return Navigator.of(context).pushReplacementNamed("home");
+      return await Navigator.of(context).pushReplacementNamed("home");
     }
     print("$nn_id");
   }

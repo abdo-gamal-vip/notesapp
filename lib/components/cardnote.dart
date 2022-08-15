@@ -75,9 +75,9 @@ class _CardNotesState extends State<CardNotes> with Crud {
                               FlatButton(
                                 child: Text("Yes"),
                                 onPressed: () {
-                                  setState(() {
+                                  setState(() async {
                                     deleten(widget.nn_id, context);
-                                    Navigator.push(
+                                    await Navigator.push(
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Home()));

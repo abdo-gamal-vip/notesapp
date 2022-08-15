@@ -1,7 +1,10 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:notesapp/app/about_us.dart';
 import 'package:notesapp/app/edit_note.dart';
+import 'package:notesapp/app/top_notes.dart';
 import 'package:notesapp/components/cardnote.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
@@ -46,6 +49,12 @@ class _HomeState extends State<Home> with Crud {
       ),
       appBar: AppBar(
         actions: [
+          IconButton(
+              onPressed: (() {
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (context) => aboutUs()));
+              }),
+              icon: Icon(Icons.info_outline)),
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: IconButton(
@@ -108,7 +117,31 @@ class _HomeState extends State<Home> with Crud {
                     );
                   }
                 },
-              )
+              ),
+              FutureBuilder(
+                  future: viewNote(),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    if (snapshot.hasData) if (snapshot.data['status'] ==
+                        'fail') {
+                      return Text("لا يوجد ملاحظات");
+                    }
+                    return CarouselSlider.builder(
+                      itemCount: snapshot.data["data"].length,
+                      itemBuilder: ((context, index, realIndex) {
+                        return TopNotes(
+                            size: MediaQuery.of(context).size,
+                            img: snapshot.data["data"][index]["n_image"] == null
+                                ? "text.png"
+                                : snapshot.data["data"][index]["n_image"],
+                            content: "",
+                            title: snapshot.data["data"][index]["n_title"]);
+                      }),
+                      options: CarouselOptions(
+                          enableInfiniteScroll: false,
+                          enlargeCenterPage: true,
+                          autoPlayAnimationDuration: Duration(seconds: 1)),
+                    );
+                  })
             ],
           ),
         ),
