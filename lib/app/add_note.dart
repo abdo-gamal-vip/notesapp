@@ -60,7 +60,7 @@ class _adddNoteState extends State<adddNote> with Crud {
     isLoading = true;
     setState(() {});
     try {
-      var response = await postRequset(addlink, {
+      var response = await postRequset(addwitoutphoto, {
         "users": shardprefs.getString("u_id"),
         "title": title.text,
         "content": content.text,
@@ -70,7 +70,7 @@ class _adddNoteState extends State<adddNote> with Crud {
       print(response);
       return response;
     } catch (e) {
-      print(e);
+      print("$e error e");
     }
   }
 
@@ -254,11 +254,17 @@ class _adddNoteState extends State<adddNote> with Crud {
                                               MaterialStateProperty.all(
                                                   Colors.lightGreen)),
                                       onPressed: () async {
-                                        setState(() {
-                                          print("add note");
-                                          addNotewithphoto();
-                                        });
-                                        print("object");
+                                        if (myfile == null) {
+                                          setState(() {
+                                            print("add with out photo");
+                                            addNote();
+                                          });
+                                        } else {
+                                          setState(() {
+                                            print("add with photo");
+                                            addNotewithphoto();
+                                          });
+                                        }
                                       },
                                       child: Text(
                                         "Save",

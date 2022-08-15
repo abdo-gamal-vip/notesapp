@@ -103,7 +103,7 @@ class _HomeState extends State<Home> with Crud {
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) ;
                   {
-                    return const Center(
+                    return Center(
                       child: CircularProgressIndicator(),
                     );
                   }

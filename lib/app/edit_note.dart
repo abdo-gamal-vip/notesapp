@@ -30,6 +30,7 @@ class _editNoteState extends State<editNote> with Crud {
         "n_title": title.text,
         "n_content": content.text,
         "n_id": widget.notes["n_id"].toString(),
+        "n_image": widget.notes["n_image"].toString()
       });
       isLoading = false;
       setState(() {});

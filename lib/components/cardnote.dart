@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:get/get.dart';
+import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/models/model_notes.dart';
 
 class CardNotes extends StatefulWidget with Crud {
@@ -30,9 +33,9 @@ class _CardNotesState extends State<CardNotes> with Crud {
           children: [
             Expanded(
                 flex: 1,
-                child: widget.noteModel.nImage.toString().contains("https://")
+                child: widget.noteModel.nImage.toString().contains(".")
                     ? Image.network(
-                        "${widget.noteModel.nImage}",
+                        "$imageroot/${widget.noteModel.nImage}",
                         width: 100,
                         height: 100,
                       )
@@ -74,8 +77,11 @@ class _CardNotesState extends State<CardNotes> with Crud {
                                 onPressed: () {
                                   setState(() {
                                     deleten(widget.nn_id, context);
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) => Home()));
                                   });
-                                  Navigator.pop(context);
                                 },
                               ),
                               FlatButton(
