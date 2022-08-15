@@ -121,9 +121,13 @@ class _HomeState extends State<Home> with Crud {
               FutureBuilder(
                   future: viewNote(),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    if (snapshot.hasData) if (snapshot.data['status'] ==
-                        'fail') {
+                    if (snapshot.data['status'] == 'fail') {
                       return Text("لا يوجد ملاحظات");
+                    }
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Center(
+                        child: CircularProgressIndicator(),
+                      );
                     }
                     return CarouselSlider.builder(
                       itemCount: snapshot.data["data"].length,
@@ -141,7 +145,7 @@ class _HomeState extends State<Home> with Crud {
                           enlargeCenterPage: true,
                           autoPlayAnimationDuration: Duration(seconds: 1)),
                     );
-                  })
+                  }),
             ],
           ),
         ),

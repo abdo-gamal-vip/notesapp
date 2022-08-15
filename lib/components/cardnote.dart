@@ -57,7 +57,7 @@ class _CardNotesState extends State<CardNotes> with Crud {
                   ),
                   trailing: IconButton(
                     icon: Icon(Icons.delete),
-                    onPressed: () {
+                    onPressed: () async {
                       setState(() {
                         deleten(widget.nn_id, context);
                       });
@@ -74,7 +74,7 @@ class _CardNotesState extends State<CardNotes> with Crud {
                             actions: [
                               FlatButton(
                                 child: Text("Yes"),
-                                onPressed: () {
+                                onPressed: () async {
                                   setState(() async {
                                     deleten(widget.nn_id, context);
                                     await Navigator.push(
