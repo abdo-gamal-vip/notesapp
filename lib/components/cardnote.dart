@@ -60,6 +60,7 @@ class _CardNotesState extends State<CardNotes> with Crud {
                     onPressed: () async {
                       setState(() {
                         deleten(widget.nn_id, context);
+                        Navigator.pop(context);
                       });
                     },
                   ),
@@ -77,10 +78,7 @@ class _CardNotesState extends State<CardNotes> with Crud {
                                 onPressed: () async {
                                   setState(() async {
                                     deleten(widget.nn_id, context);
-                                    await Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => Home()));
+                                    Navigator.pop(context);
                                   });
                                 },
                               ),
