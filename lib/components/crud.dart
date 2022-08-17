@@ -48,6 +48,21 @@ class Crud {
     }
     print("$nn_id");
   }
+
+  bookmark(
+    nn_id,
+    context,
+    String bookmark,
+  ) async {
+    var response = await postRequset(addbooklink, {
+      "n_id": nn_id,
+      "n_bookmark": bookmark,
+    });
+    if (response["status"] == "success") {
+      return await Navigator.of(context).pushReplacementNamed("home");
+    }
+    print("$nn_id");
+  }
 }
 
 postRequsetFile(String url, Map data, File file) async {

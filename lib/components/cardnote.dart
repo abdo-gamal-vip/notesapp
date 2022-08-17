@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
@@ -17,6 +18,7 @@ class CardNotes extends StatefulWidget with Crud {
       : super(key: key);
 
   String nn_id;
+  bool isbookmark = false;
 
   void Function() ontap;
   @override
@@ -56,11 +58,23 @@ class _CardNotesState extends State<CardNotes> with Crud {
                     style: TextStyle(fontSize: 18),
                   ),
                   trailing: IconButton(
-                    icon: Icon(Icons.delete),
+                    focusColor: Colors.teal,
+                    enableFeedback: mounted,
+                    icon: Icon(Icons.bookmark),
                     onPressed: () async {
+                      bool isbookmark = true;
+                      int trfl = 0;
+
                       setState(() {
-                        deleten(widget.nn_id, context);
-                        Navigator.pop(context);
+                        if (isbookmark) {
+                          bookmark(widget.nn_id, context, "true");
+                          isbookmark = !isbookmark;
+                          print(isbookmark);
+                        }
+                        if (isbookmark) {
+                          bookmark(widget.nn_id, context, "false");
+                          isbookmark = !isbookmark;
+                        }
                       });
                     },
                   ),
