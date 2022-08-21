@@ -46,15 +46,17 @@ class AccountView extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "controller.name.toString()" == null
+                            shardprefs.getString("u_id") == null
                                 ? 'loading name'
-                                : "controller.name.toString()",
+                                : shardprefs.getString("username").toString(),
                             style: TextStyle(
                                 fontSize: 26, fontWeight: FontWeight.w500),
                           ),
-                          Text("controller.email.toString()" == null
-                              ? 'loading email'
-                              : "controller.email.toString()"),
+                          Text(
+                            shardprefs.getString("u_id") == null
+                                ? 'loading name'
+                                : shardprefs.getString("email").toString(),
+                          ),
                           InkWell(
                               onTap: () {
                                 Get.to(Home());
@@ -93,7 +95,7 @@ class AccountView extends StatelessWidget {
                     onTap: () {
                       Get.to(Home());
                     },
-                    leading: Image.asset("assets/svg/editprofile.png"),
+                    leading: Image.asset("asset/svg/editprofile.png"),
                     title: Text("Tracking Order"),
                     trailing: RotatedBox(
                       quarterTurns: 2,
@@ -106,7 +108,7 @@ class AccountView extends StatelessWidget {
                     onTap: () {
                       Get.to(Home());
                     },
-                    leading: Image.asset("assets/svg/editprofile.png"),
+                    leading: Image.asset("asset/svg/editprofile.png"),
                     title: Text("Notifications"),
                     trailing: RotatedBox(
                       quarterTurns: 2,

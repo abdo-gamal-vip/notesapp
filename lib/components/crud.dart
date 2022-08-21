@@ -40,9 +40,8 @@ class Crud {
     nn_id,
     context,
   ) async {
-    var response = await postRequset(deletelink, {
-      "n_id": nn_id,
-    });
+    var response =
+        await postRequset(deletelink, {"n_id": nn_id, "imagename": "imagename"});
     if (response["status"] == "success") {
       return await Navigator.of(context).pushReplacementNamed("home");
     }
