@@ -5,6 +5,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:notesapp/app/about_us.dart';
 import 'package:notesapp/app/auth/account_view.dart';
+import 'package:notesapp/app/book_mark.dart';
 import 'package:notesapp/app/edit_note.dart';
 import 'package:notesapp/app/top_notes.dart';
 import 'package:notesapp/app/view_note.dart';
@@ -46,7 +47,7 @@ class _HomeState extends State<Home> {
         widget = ViewNotes();
         break;
       case 1:
-        widget = ViewNotes();
+        widget = BookMarks();
         break;
       case 2:
         widget = AccountView();
@@ -112,7 +113,9 @@ class _HomeState extends State<Home> {
       ),
       body: Container(
         padding: const EdgeInsets.all(5),
-        child: getSelectedWidget(index: index),
+        child: IndexedStack(
+          children: [getSelectedWidget(index: index)],
+        ),
       ),
     );
   }

@@ -18,7 +18,6 @@ class CardNotes extends StatefulWidget with Crud {
       : super(key: key);
 
   String nn_id;
-  bool isbookmark = false;
 
   void Function() ontap;
   @override
@@ -26,6 +25,13 @@ class CardNotes extends StatefulWidget with Crud {
 }
 
 class _CardNotesState extends State<CardNotes> with Crud {
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  var _checked = false;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -58,26 +64,25 @@ class _CardNotesState extends State<CardNotes> with Crud {
                     style: TextStyle(fontSize: 18),
                   ),
                   trailing: IconButton(
-                    focusColor: Colors.teal,
-                    enableFeedback: mounted,
-                    icon: Icon(Icons.bookmark),
-                    onPressed: () async {
-                      bool isbookmark = true;
-                      int trfl = 0;
-
-                      setState(() {
-                        if (isbookmark) {
-                          bookmark(widget.nn_id, context, "true");
-                          isbookmark = !isbookmark;
-                          print(isbookmark);
-                        }
-                        if (isbookmark) {
-                          bookmark(widget.nn_id, context, "false");
-                          isbookmark = !isbookmark;
-                        }
-                      });
-                    },
-                  ),
+                      color: widget.noteModel.n_bookmark == "false"
+                          ? Colors.red
+                          : Colors.teal,
+                      disabledColor: Colors.grey,
+                      focusColor: Colors.red,
+                      onPressed: () {
+                        _checked = !_checked;
+                        setState(() {
+                          if (_checked == true) {
+                            bookmark(widget.nn_id, context, "true");
+                            print("t");
+                          }
+                          if (_checked == false) {
+                            bookmark(widget.nn_id, context, "false");
+                            print("f");
+                          }
+                        });
+                      },
+                      icon: Icon(Icons.bookmark)),
                   onLongPress: () {
                     showDialog(
                         context: context,

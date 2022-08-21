@@ -7,6 +7,7 @@ import 'package:notesapp/app/auth/login.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
+import 'package:notesapp/models/model_notes.dart';
 
 class AccountView extends StatelessWidget {
   AccountView({Key? key}) : super(key: key);
@@ -79,7 +80,7 @@ class AccountView extends StatelessWidget {
                     onTap: () {
                       Get.to(Home());
                     },
-                    leading: Image.asset("assets/svg/editprofile.png"),
+                    leading: Image.asset("asset/svg/editprofile.png"),
                     title: Text("Edit Profile"),
                     trailing: RotatedBox(
                       quarterTurns: 2,
