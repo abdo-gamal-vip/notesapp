@@ -1,16 +1,36 @@
+import 'dart:io';
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/auth/login.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 import 'package:notesapp/models/model_notes.dart';
 
-class AccountView extends StatelessWidget {
-  AccountView({Key? key}) : super(key: key);
+class AccountView extends StatefulWidget {
+  const AccountView({Key? key, this.notes}) : super(key: key);
+  final notes;
+  @override
+  State<AccountView> createState() => _AccountViewState();
+}
+
+class _AccountViewState extends State<AccountView> with Crud {
+  late File myfile;
+
+  uploadprofilepic() async {
+    var response = await postRequsetFile(
+        addprofilelink,
+        {
+          "u_id": shardprefs.getString("u_id"),
+          "imagename": widget.notes["profilepic"].toString()
+        },
+        myfile);
+    print("object");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,16 +46,92 @@ class AccountView extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Container(
-                      height: 812 * 120 / Get.height,
-                      width: 812 * 120 / Get.height,
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        color: Colors.teal.withOpacity(0.20),
-                      ),
-                      child: Icon(
-                        Icons.person,
-                        color: Colors.teal,
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet(
+                            context: context,
+                            builder: (context) => Container(
+                                  height: 160,
+                                  width: double.infinity,
+                                  child: Column(children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceAround,
+                                      children: [
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 140,
+                                          width: 80,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              XFile? xfile = await ImagePicker()
+                                                  .pickImage(
+                                                      source:
+                                                          ImageSource.gallery);
+                                              myfile = File(xfile!.path);
+                                              setState(() {
+                                                uploadprofilepic();
+                                                print("done");
+                                              });
+                                            },
+                                            child: Column(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Image.asset(
+                                                  "asset/gallery.png",
+                                                  fit: BoxFit.cover,
+                                                ),
+                                                Text("from gallery"),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                        Container(
+                                          alignment: Alignment.center,
+                                          height: 140,
+                                          width: 80,
+                                          child: InkWell(
+                                            onTap: () async {
+                                              XFile? xfile = await ImagePicker()
+                                                  .pickImage(
+                                                      source:
+                                                          ImageSource.camera);
+                                              myfile = File(xfile!.path);
+                                            },
+                                            child: Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Image.asset(
+                                                  "asset/camera.png",
+                                                  fit: BoxFit.cover,
+                                                ),
+                                                Text("from gallery"),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ]),
+                                ));
+                      },
+                      child: Container(
+                        height: 812 * 120 / Get.height,
+                        width: 812 * 120 / Get.height,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: Colors.teal.withOpacity(0.20),
+                        ),
+                        child: Icon(
+                          Icons.person,
+                          color: Colors.teal,
+                        ),
                       ),
                     ),
                     Container(

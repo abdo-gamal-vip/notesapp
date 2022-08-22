@@ -36,12 +36,26 @@ class Crud {
     }
   }
 
-  deleten(
+  deletwithoutphoto(
     nn_id,
     context,
   ) async {
+    var response = await postRequset(deletelink, {
+      "n_id": nn_id,
+    });
+    if (response["status"] == "success") {
+      return await Navigator.of(context).pushReplacementNamed("home");
+    }
+    print("$nn_id");
+  }
+
+  deletwithphoto(
+    nn_id,
+    context,
+    imagename,
+  ) async {
     var response =
-        await postRequset(deletelink, {"n_id": nn_id, "imagename": "imagename"});
+        await postRequset(deletelink, {"n_id": nn_id, "imagename": imagename});
     if (response["status"] == "success") {
       return await Navigator.of(context).pushReplacementNamed("home");
     }

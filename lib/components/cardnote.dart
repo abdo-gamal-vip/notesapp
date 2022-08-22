@@ -3,6 +3,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
@@ -95,9 +96,19 @@ class _CardNotesState extends State<CardNotes> with Crud {
                               FlatButton(
                                 child: Text("Yes"),
                                 onPressed: () async {
-                                  setState(() async {
-                                    deleten(widget.nn_id, context);
-                                    Navigator.pop(context);
+                                  setState(() {
+                                    if (XFile == null) {
+                                      print("with out");
+                                      deletwithoutphoto(widget.nn_id, context);
+
+                                      Navigator.pop(context);
+                                    } else {
+                                      print("with ");
+                                      deletwithphoto(widget.nn_id, context,
+                                          widget.noteModel.nImage.toString());
+
+                                      Navigator.pop(context);
+                                    }
                                   });
                                 },
                               ),

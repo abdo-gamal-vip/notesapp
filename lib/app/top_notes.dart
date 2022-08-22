@@ -29,8 +29,8 @@ class TopNotes extends StatelessWidget {
             )),
         Positioned(
           child: Container(
-              height: size.height * 0.1,
-              width: size.width * 0.60,
+              height: size.height * 0.06,
+              width: size.width * 0.70,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
                 borderRadius: BorderRadius.only(
@@ -50,10 +50,10 @@ class TopNotes extends StatelessWidget {
         ),
         Positioned(
           child: Container(
-              height: size.height * 0.04,
-              width: size.width * 0.15,
+              height: size.height * 0.20,
+              width: size.width * 0.10,
               decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.8),
+                color: Colors.teal.withOpacity(0.8),
                 borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     topRight: Radius.circular(14)),
@@ -77,9 +77,9 @@ class TopNotes extends StatelessWidget {
           child: Container(
             child: Padding(
                 padding: const EdgeInsets.all(4),
-                child: Text(
-                  "***",
-                  style: TextStyle(fontSize: 30, color: Colors.cyanAccent),
+                child: Icon(
+                  Icons.bookmark,
+                  color: Colors.white,
                 )),
           ),
           top: 0,

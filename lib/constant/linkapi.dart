@@ -12,3 +12,4 @@ const String deletelink = "http://10.0.2.2/notesapp/notes/delete.php";
 const String editlink = "http://10.0.2.2/notesapp/notes/edit.php";
 const String imageroot = "http://10.0.2.2/notesapp/upload";
 const String addbooklink = "http://10.0.2.2/notesapp/notes/add_book.php";
+const String addprofilelink = "http://10.0.2.2/notesapp/notes/add_profile.php";

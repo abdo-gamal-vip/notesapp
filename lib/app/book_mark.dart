@@ -44,6 +44,19 @@ class _BookMarksState extends State<BookMarks> with Crud {
         },
         child: ListView(
           children: [
+            Container(
+              width: double.infinity,
+              color: Colors.teal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "<< BookMarks >>",
+                    style: TextStyle(fontSize: 20, color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
             FutureBuilder(
               future: viewNoteBook(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
