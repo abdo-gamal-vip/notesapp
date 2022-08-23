@@ -7,9 +7,10 @@ import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/auth/login.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 import 'package:notesapp/models/model_notes.dart';
+
+import '../../constant/linkapi.dart';
 
 class AccountView extends StatefulWidget {
   const AccountView({Key? key, this.notes}) : super(key: key);

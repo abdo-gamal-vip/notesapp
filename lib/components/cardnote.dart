@@ -6,8 +6,9 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/models/model_notes.dart';
+
+import '../constant/linkapi.dart';
 
 class CardNotes extends StatefulWidget with Crud {
   final NotesModel noteModel;

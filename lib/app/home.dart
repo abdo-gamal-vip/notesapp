@@ -11,7 +11,6 @@ import 'package:notesapp/app/top_notes.dart';
 import 'package:notesapp/app/view_note.dart';
 import 'package:notesapp/components/cardnote.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 import 'package:notesapp/models/model_notes.dart';
 

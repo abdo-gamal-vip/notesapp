@@ -6,11 +6,11 @@ import 'package:get/get.dart';
 import 'package:notesapp/app/auth/signup.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 import '../../components/customtextform.dart';
 import '../../components/small_button.dart';
 import '../../components/valid.dart';
+import '../../constant/linkapi.dart';
 
 class Login extends StatefulWidget {
   Login({Key? key}) : super(key: key);

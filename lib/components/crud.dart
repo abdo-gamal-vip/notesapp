@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'package:notesapp/constant/linkapi.dart';
+import '../constant/linkapi.dart';
 import '../main.dart';
 import 'package:path/path.dart';
 

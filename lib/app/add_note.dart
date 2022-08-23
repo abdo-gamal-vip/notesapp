@@ -7,9 +7,8 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
-
-import '../constant/linkapi.dart';
 
 class adddNote extends StatefulWidget {
   const adddNote({Key? key}) : super(key: key);
