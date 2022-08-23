@@ -7,6 +7,10 @@ import 'package:notesapp/constant/linkapi.dart';
 import '../main.dart';
 import 'package:path/path.dart';
 
+String _basicAuth = 'Basic ' + base64Encode(utf8.encode('abdo:abdo'));
+
+Map<String, String> myheaders = {'authorization': _basicAuth};
+
 class Crud {
   getRequset(String url, Map<String, dynamic> map) async {
     try {
@@ -24,7 +28,8 @@ class Crud {
 
   postRequset(String url, Map data) async {
     try {
-      var response = await http.post(Uri.parse(url), body: data);
+      var response =
+          await http.post(Uri.parse(url), body: data, headers: myheaders);
       if (response.statusCode == 200) {
         var responsebody = jsonDecode(response.body);
         return responsebody;
@@ -85,6 +90,7 @@ postRequsetFile(String url, Map data, File file) async {
     var stream = http.ByteStream(file.openRead());
     var mulitPartFile = await http.MultipartFile("file", stream, lenght,
         filename: basename(file.path));
+    requset.headers.addAll(myheaders);
     requset.files.add(mulitPartFile);
     data.forEach((key, value) {
       requset.fields[key] = value;
