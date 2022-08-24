@@ -1,9 +1,9 @@
 class NotesModel {
-  int? nId;
+  String? nId;
   String? nTitle;
   String? nContent;
   String? nImage;
-  int? nUsers;
+  String? nUsers;
   String? n_bookmark;
 
   NotesModel(
