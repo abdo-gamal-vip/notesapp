@@ -1,13 +1,9 @@
+// ignore_for_file: must_be_immutable, non_constant_identifier_names, avoid_print, deprecated_member_use, unnecessary_null_comparison
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/models/model_notes.dart';
-
 import '../constant/linkapi.dart';
 
 class CardNotes extends StatefulWidget with Crud {
@@ -29,7 +25,6 @@ class CardNotes extends StatefulWidget with Crud {
 class _CardNotesState extends State<CardNotes> with Crud {
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
   }
 
@@ -91,8 +86,8 @@ class _CardNotesState extends State<CardNotes> with Crud {
                         builder: (context) {
                           return AlertDialog(
                             title: const Text("Delete"),
-                            content:
-                                const Text("Are you sure want to delete this note?"),
+                            content: const Text(
+                                "Are you sure want to delete this note?"),
                             actions: [
                               FlatButton(
                                 child: const Text("Yes"),
