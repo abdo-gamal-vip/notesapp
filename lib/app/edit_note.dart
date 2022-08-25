@@ -1,4 +1,4 @@
-// ignore_for_file: sized_box_for_whitespace
+// ignore_for_file: sized_box_for_whitespace, prefer_typing_uninitialized_variables, duplicate_ignore, avoid_print
 
 import 'dart:io';
 
@@ -177,7 +177,8 @@ class _editNoteState extends State<editNote> with Crud {
                                                           "asset/gallery.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        const Text("from gallery"),
+                                                        const Text(
+                                                            "from gallery"),
                                                       ],
                                                     ),
                                                   ),
@@ -209,7 +210,8 @@ class _editNoteState extends State<editNote> with Crud {
                                                           "asset/camera.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        const Text("from gallery"),
+                                                        const Text(
+                                                            "from gallery"),
                                                       ],
                                                     ),
                                                   ),

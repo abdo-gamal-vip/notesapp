@@ -1,14 +1,13 @@
+// ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, unused_local_variable, prefer_const_constructors
+
 import 'dart:io';
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/auth/login.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
-import 'package:notesapp/models/model_notes.dart';
 
 import '../../constant/linkapi.dart';
 

@@ -35,7 +35,7 @@ class TopNotes extends StatelessWidget {
               width: size.width * 0.70,
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.8),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     topRight: Radius.circular(35)),
               ),
@@ -43,8 +43,9 @@ class TopNotes extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Center(
                     child: Text(
-                  (" ${title}"),
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  (" $title"),
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold),
                 )),
               )),
         ),
@@ -57,7 +58,7 @@ class TopNotes extends StatelessWidget {
               width: size.width * 0.10,
               decoration: BoxDecoration(
                 color: Colors.teal.withOpacity(0.8),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                     bottomLeft: Radius.circular(20),
                     topRight: Radius.circular(14)),
               ),
@@ -66,24 +67,23 @@ class TopNotes extends StatelessWidget {
                 child: Center(
                     child: Text(
                   content,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.black),
                 )),
               )),
         ),
+        // ignore: prefer_const_constructors
         Positioned(
           top: 0,
           right: 0,
-          child: Container(
-            child: Padding(
-                padding: const EdgeInsets.all(4),
-                child: Icon(
-                  Icons.bookmark,
-                  color: Colors.white,
-                )),
-          ),
+          child: const Padding(
+              padding: EdgeInsets.all(4),
+              child: Icon(
+                Icons.bookmark,
+                color: Colors.white,
+              )),
         )
       ],
     );

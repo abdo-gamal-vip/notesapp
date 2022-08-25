@@ -1,8 +1,7 @@
+// ignore_for_file: use_build_context_synchronously, avoid_print, prefer_const_constructors
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:get/get.dart';
 import 'package:notesapp/app/auth/signup.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
@@ -33,7 +32,7 @@ class _LoginState extends State<Login> {
       try {
         isLoading = true;
         setState(() {});
-        var response = await crud.postRequset(Loginlink, {
+        var response = await crud.postRequset(loginlink, {
           "email": email.text,
           "password": password.text,
         });
@@ -120,7 +119,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 8,
                         ),
-                        smallbutton(
+                        Smallbutton(
                             txt: "login ",
                             onPreased: () async {
                               await login();
@@ -128,7 +127,7 @@ class _LoginState extends State<Login> {
                         const SizedBox(
                           height: 6,
                         ),
-                        smallbutton(
+                        Smallbutton(
                             txt: "Signup ",
                             onPreased: () {
                               Navigator.of(context).push(MaterialPageRoute(

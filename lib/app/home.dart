@@ -1,18 +1,11 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:notesapp/app/about_us.dart';
 import 'package:notesapp/app/auth/account_view.dart';
 import 'package:notesapp/app/book_mark.dart';
-import 'package:notesapp/app/edit_note.dart';
-import 'package:notesapp/app/top_notes.dart';
 import 'package:notesapp/app/view_note.dart';
-import 'package:notesapp/components/cardnote.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
-import 'package:notesapp/models/model_notes.dart';
 
 import 'add_note.dart';
 
@@ -68,7 +61,7 @@ class _HomeState extends State<Home> {
         child: IconButton(
           onPressed: () {
             Navigator.push((context),
-                MaterialPageRoute(builder: (context) => const adddNote()));
+                MaterialPageRoute(builder: (context) => const AdddNote()));
           },
           icon: const Icon(Icons.add),
         ),
@@ -77,8 +70,8 @@ class _HomeState extends State<Home> {
         actions: [
           IconButton(
               onPressed: (() {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => const AboutUs()));
+                Navigator.of(context).push(
+                    MaterialPageRoute(builder: (context) => const AboutUs()));
               }),
               icon: const Icon(Icons.info_outline)),
           Padding(

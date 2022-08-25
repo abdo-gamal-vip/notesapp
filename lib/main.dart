@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/app/edit_note.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/auth/signup.dart';
@@ -22,8 +21,8 @@ class MyApp extends StatelessWidget {
         initialRoute: shardprefs.getString("u_id") == null ? 'login' : 'home',
         routes: {
           'home': (context) => Home(),
-          'login': (context) => Login(),
-          'signup': (context) => Signup(),
+          'login': (context) => const Login(),
+          'signup': (context) => const Signup(),
         });
   }
 }

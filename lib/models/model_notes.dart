@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 class NotesModel {
   String? nId;
   String? nTitle;
@@ -24,7 +26,7 @@ class NotesModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['n_id'] = nId;
     data['n_title'] = nTitle;
     data['n_content'] = nContent;

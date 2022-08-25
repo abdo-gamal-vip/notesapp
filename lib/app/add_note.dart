@@ -1,25 +1,22 @@
+// ignore_for_file: avoid_print, use_build_context_synchronously
+
 import 'dart:io';
-import 'dart:ui';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 
-class adddNote extends StatefulWidget {
-  const adddNote({Key? key}) : super(key: key);
+class AdddNote extends StatefulWidget {
+  const AdddNote({Key? key}) : super(key: key);
 
   @override
-  State<adddNote> createState() => _adddNoteState();
+  State<AdddNote> createState() => _AdddNoteState();
 }
 
-class _adddNoteState extends State<adddNote> with Crud {
-  final GlobalKey<FormState> _tkey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _ckey = GlobalKey<FormState>();
+class _AdddNoteState extends State<AdddNote> with Crud {
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   TextEditingController title = TextEditingController();
@@ -116,8 +113,8 @@ class _adddNoteState extends State<adddNote> with Crud {
                                   prefixIcon: const Icon(Icons.title),
                                   disabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
-                                      borderSide:
-                                          const BorderSide(color: Colors.teal))),
+                                      borderSide: const BorderSide(
+                                          color: Colors.teal))),
                             ),
                             const SizedBox(
                               height: 10,
@@ -139,8 +136,8 @@ class _adddNoteState extends State<adddNote> with Crud {
                                   prefixIcon: const Icon(Icons.title),
                                   disabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
-                                      borderSide:
-                                          const BorderSide(color: Colors.teal))),
+                                      borderSide: const BorderSide(
+                                          color: Colors.teal))),
                             ),
                             const SizedBox(
                               height: 10,
@@ -184,7 +181,8 @@ class _adddNoteState extends State<adddNote> with Crud {
                                                           "asset/gallery.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        const Text("from gallery"),
+                                                        const Text(
+                                                            "from gallery"),
                                                       ],
                                                     ),
                                                   ),
@@ -216,7 +214,8 @@ class _adddNoteState extends State<adddNote> with Crud {
                                                           "asset/camera.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        const Text("from gallery"),
+                                                        const Text(
+                                                            "from gallery"),
                                                       ],
                                                     ),
                                                   ),

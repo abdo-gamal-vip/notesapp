@@ -1,7 +1,9 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
-class smallbutton extends StatelessWidget {
-  smallbutton({Key? key, required this.txt, required this.onPreased})
+class Smallbutton extends StatelessWidget {
+  Smallbutton({Key? key, required this.txt, required this.onPreased})
       : super(key: key);
   String txt = "";
   void Function() onPreased;

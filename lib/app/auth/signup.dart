@@ -1,12 +1,7 @@
-import 'dart:ffi';
-import 'dart:math';
+// ignore_for_file: avoid_print, use_build_context_synchronously, prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:http/http.dart';
 import 'package:notesapp/app/auth/login.dart';
-import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/components/valid.dart';
 import 'package:notesapp/constant/linkapi.dart';
@@ -32,7 +27,7 @@ class _SignupState extends State<Signup> {
       try {
         isLoading = true;
         setState(() {});
-        var response = await _crud.postRequset(Signuplink, {
+        var response = await _crud.postRequset(signuplink, {
           "username": username.text,
           "email": email.text,
           "password": password.text,
@@ -112,7 +107,7 @@ class _SignupState extends State<Signup> {
                         const SizedBox(
                           height: 8,
                         ),
-                        smallbutton(
+                        Smallbutton(
                             txt: "Create Account",
                             onPreased: () {
                               setState(() {
@@ -122,7 +117,7 @@ class _SignupState extends State<Signup> {
                                         builder: (context) => Login()));
                               });
                             }),
-                        smallbutton(
+                        Smallbutton(
                             txt: "login ",
                             onPreased: () {
                               setState(() {
@@ -135,7 +130,7 @@ class _SignupState extends State<Signup> {
                         const SizedBox(
                           height: 6,
                         ),
-                        smallbutton(
+                        Smallbutton(
                             txt: "signup ",
                             onPreased: () {
                               setState(() {

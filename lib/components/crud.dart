@@ -1,10 +1,10 @@
-import 'dart:io';
+// ignore_for_file: avoid_print, depend_on_referenced_packages
 
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../constant/linkapi.dart';
-import '../main.dart';
 import 'package:path/path.dart';
 
 String _basicAuth = 'Basic ${base64Encode(utf8.encode('abdo:abdo'))}';

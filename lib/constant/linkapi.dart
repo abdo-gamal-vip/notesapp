@@ -1,9 +1,9 @@
 const String linkserverName = "https://techshowvip.000webhostapp.com/notesapp";
 
 //auth
-const String Signuplink =
+const String signuplink =
     "https://techshowvip.000webhostapp.com/notesapp/auth/signup.php";
-const String Loginlink =
+const String loginlink =
     "https://techshowvip.000webhostapp.com/notesapp/auth/login.php";
 const String addlink =
     "https://techshowvip.000webhostapp.com/notesapp/notes/add.php";

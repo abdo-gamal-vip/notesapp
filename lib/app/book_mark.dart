@@ -1,15 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:notesapp/app/top_notes.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/main.dart';
-
 import '../components/cardnote.dart';
 import '../constant/linkapi.dart';
 import '../models/model_notes.dart';
-import 'edit_note.dart';
 
 class BookMarks extends StatefulWidget {
   const BookMarks({Key? key}) : super(key: key);
