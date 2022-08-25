@@ -20,7 +20,7 @@ class BookMarks extends StatefulWidget {
 
 class _BookMarksState extends State<BookMarks> with Crud {
   Future viewNoteBook() async {
-    Duration(milliseconds: 50);
+    const Duration(milliseconds: 50);
     var response = await postRequset(viewsbooklink, {
       "n_users": "45",
       "n_bookmark": "true",
@@ -28,6 +28,7 @@ class _BookMarksState extends State<BookMarks> with Crud {
     return await response;
   }
 
+  @override
   void initState() {
     viewNoteBook();
     super.initState();
@@ -49,7 +50,7 @@ class _BookMarksState extends State<BookMarks> with Crud {
               color: Colors.teal,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     "<< BookMarks >>",
                     style: TextStyle(fontSize: 20, color: Colors.white),
@@ -61,12 +62,13 @@ class _BookMarksState extends State<BookMarks> with Crud {
               future: viewNoteBook(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
-                  if (snapshot.data['status'] == 'fail')
+                  if (snapshot.data['status'] == 'fail') {
                     return const Center(
                         child: Text(
                       "لا يوجد اى ملاحظات جديده \n من فضلك ادخل ملاحظه",
                       style: TextStyle(fontSize: 20),
                     ));
+                  }
                   return ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -81,9 +83,9 @@ class _BookMarksState extends State<BookMarks> with Crud {
                         );
                       });
                 }
-                if (snapshot.connectionState == ConnectionState.waiting) ;
+                if (snapshot.connectionState == ConnectionState.waiting) {}
                 {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }

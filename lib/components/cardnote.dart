@@ -59,11 +59,11 @@ class _CardNotesState extends State<CardNotes> with Crud {
                 child: ListTile(
                   title: Text(
                     "${widget.noteModel.nTitle}",
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   ),
                   subtitle: Text(
                     "${widget.noteModel.nContent}",
-                    style: TextStyle(fontSize: 18),
+                    style: const TextStyle(fontSize: 18),
                   ),
                   trailing: IconButton(
                       color: widget.noteModel.n_bookmark == "false"
@@ -84,18 +84,18 @@ class _CardNotesState extends State<CardNotes> with Crud {
                           }
                         });
                       },
-                      icon: Icon(Icons.bookmark)),
+                      icon: const Icon(Icons.bookmark)),
                   onLongPress: () {
                     showDialog(
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            title: Text("Delete"),
+                            title: const Text("Delete"),
                             content:
-                                Text("Are you sure want to delete this note?"),
+                                const Text("Are you sure want to delete this note?"),
                             actions: [
                               FlatButton(
-                                child: Text("Yes"),
+                                child: const Text("Yes"),
                                 onPressed: () async {
                                   setState(() {
                                     if (XFile == null) {
@@ -114,7 +114,7 @@ class _CardNotesState extends State<CardNotes> with Crud {
                                 },
                               ),
                               FlatButton(
-                                child: Text("No"),
+                                child: const Text("No"),
                                 onPressed: () {
                                   Navigator.pop(context);
                                 },

@@ -18,8 +18,8 @@ class adddNote extends StatefulWidget {
 }
 
 class _adddNoteState extends State<adddNote> with Crud {
-  GlobalKey<FormState> _tkey = GlobalKey<FormState>();
-  GlobalKey<FormState> _ckey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _tkey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _ckey = GlobalKey<FormState>();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
 
   TextEditingController title = TextEditingController();
@@ -31,7 +31,7 @@ class _adddNoteState extends State<adddNote> with Crud {
       return AwesomeDialog(
         context: context,
         title: "هام",
-        body: Text("برجاء اضافه صوره للملاحظه"),
+        body: const Text("برجاء اضافه صوره للملاحظه"),
       ).show();
     }
     isLoading = true;
@@ -78,23 +78,23 @@ class _adddNoteState extends State<adddNote> with Crud {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Colors.teal,
-          title: Text("add Note"),
+          title: const Text("add Note"),
         ),
         body: isLoading == true
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
-            : Container(
+            : SizedBox(
                 height: double.infinity,
                 width: double.infinity,
                 child: Column(children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Form(
                     key: formkey,
                     child: Container(
-                        padding: EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(5),
                         height: 600,
                         width: double.infinity,
                         child: Column(
@@ -105,21 +105,21 @@ class _adddNoteState extends State<adddNote> with Crud {
                               decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: Colors.teal),
+                                          const BorderSide(color: Colors.teal),
                                       borderRadius: BorderRadius.circular(10)),
                                   focusColor: Colors.teal,
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10)),
-                                  border: OutlineInputBorder(),
+                                  border: const OutlineInputBorder(),
                                   labelText: "Title",
                                   hintText: "Enter Title",
-                                  prefixIcon: Icon(Icons.title),
+                                  prefixIcon: const Icon(Icons.title),
                                   disabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide:
-                                          BorderSide(color: Colors.teal))),
+                                          const BorderSide(color: Colors.teal))),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             TextField(
@@ -128,21 +128,21 @@ class _adddNoteState extends State<adddNote> with Crud {
                               decoration: InputDecoration(
                                   enabledBorder: OutlineInputBorder(
                                       borderSide:
-                                          BorderSide(color: Colors.teal),
+                                          const BorderSide(color: Colors.teal),
                                       borderRadius: BorderRadius.circular(10)),
                                   focusColor: Colors.teal,
                                   focusedBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10)),
-                                  border: OutlineInputBorder(),
+                                  border: const OutlineInputBorder(),
                                   labelText: "Content",
                                   hintText: "Enter Note Content",
-                                  prefixIcon: Icon(Icons.title),
+                                  prefixIcon: const Icon(Icons.title),
                                   disabledBorder: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                       borderSide:
-                                          BorderSide(color: Colors.teal))),
+                                          const BorderSide(color: Colors.teal))),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             MaterialButton(
@@ -150,7 +150,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                               onPressed: () {
                                 showModalBottomSheet(
                                     context: context,
-                                    builder: (context) => Container(
+                                    builder: (context) => SizedBox(
                                           height: 150,
                                           width: double.infinity,
                                           child: Column(children: [
@@ -184,7 +184,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                                                           "asset/gallery.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        Text("from gallery"),
+                                                        const Text("from gallery"),
                                                       ],
                                                     ),
                                                   ),
@@ -216,7 +216,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                                                           "asset/camera.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        Text("from gallery"),
+                                                        const Text("from gallery"),
                                                       ],
                                                     ),
                                                   ),
@@ -226,7 +226,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                                           ]),
                                         ));
                               },
-                              child: Text(
+                              child: const Text(
                                 "Choose Image File",
                                 style: TextStyle(
                                     fontSize: 18, color: Colors.white),
@@ -239,9 +239,9 @@ class _adddNoteState extends State<adddNote> with Crud {
                                   ElevatedButton(
                                       style: ButtonStyle(
                                           fixedSize: MaterialStateProperty.all(
-                                              Size(100, 40)),
+                                              const Size(100, 40)),
                                           shape: MaterialStateProperty.all(
-                                              RoundedRectangleBorder(
+                                              const RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.vertical(
                                                           top: Radius.circular(
@@ -265,7 +265,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                                           });
                                         }
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         "Save",
                                         style: TextStyle(
                                             fontSize: 20,
@@ -274,9 +274,9 @@ class _adddNoteState extends State<adddNote> with Crud {
                                   ElevatedButton(
                                       style: ButtonStyle(
                                           fixedSize: MaterialStateProperty.all(
-                                              Size(100, 40)),
+                                              const Size(100, 40)),
                                           shape: MaterialStateProperty.all(
-                                              RoundedRectangleBorder(
+                                              const RoundedRectangleBorder(
                                                   borderRadius:
                                                       BorderRadius.vertical(
                                                           top: Radius.circular(
@@ -293,7 +293,7 @@ class _adddNoteState extends State<adddNote> with Crud {
                                           title.clear();
                                         });
                                       },
-                                      child: Text(
+                                      child: const Text(
                                         "Clear",
                                         style: TextStyle(
                                             fontSize: 20,

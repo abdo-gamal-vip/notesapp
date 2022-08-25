@@ -7,7 +7,7 @@ import '../constant/linkapi.dart';
 import '../main.dart';
 import 'package:path/path.dart';
 
-String _basicAuth = 'Basic ' + base64Encode(utf8.encode('abdo:abdo'));
+String _basicAuth = 'Basic ${base64Encode(utf8.encode('abdo:abdo'))}';
 
 Map<String, String> myheaders = {'authorization': _basicAuth};
 
@@ -42,53 +42,53 @@ class Crud {
   }
 
   deletwithoutphoto(
-    nn_id,
+    nnId,
     context,
   ) async {
     var response = await postRequset(deletelink, {
-      "n_id": nn_id,
+      "n_id": nnId,
     });
     if (response["status"] == "success") {
       return await Navigator.of(context).pushReplacementNamed("home");
     }
-    print("$nn_id");
+    print("$nnId");
   }
 
   deletwithphoto(
-    nn_id,
+    nnId,
     context,
     imagename,
   ) async {
     var response =
-        await postRequset(deletelink, {"n_id": nn_id, "imagename": imagename});
+        await postRequset(deletelink, {"n_id": nnId, "imagename": imagename});
     if (response["status"] == "success") {
       return await Navigator.of(context).pushReplacementNamed("home");
     }
-    print("$nn_id");
+    print("$nnId");
   }
 
   bookmark(
-    nn_id,
+    nnId,
     context,
     String bookmark,
   ) async {
     var response = await postRequset(addbooklink, {
-      "n_id": nn_id,
+      "n_id": nnId,
       "n_bookmark": bookmark,
     });
     if (response["status"] == "success") {
       return await Navigator.of(context).pushReplacementNamed("home");
     }
-    print("$nn_id");
+    print("$nnId");
   }
 }
 
 postRequsetFile(String url, Map data, File file) async {
   try {
-    var requset = await http.MultipartRequest("POST", Uri.parse(url));
+    var requset = http.MultipartRequest("POST", Uri.parse(url));
     var lenght = await file.length();
     var stream = http.ByteStream(file.openRead());
-    var mulitPartFile = await http.MultipartFile("file", stream, lenght,
+    var mulitPartFile = http.MultipartFile("file", stream, lenght,
         filename: basename(file.path));
     requset.headers.addAll(myheaders);
     requset.files.add(mulitPartFile);

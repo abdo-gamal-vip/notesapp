@@ -43,7 +43,7 @@ class _AccountViewState extends State<AccountView> with Crud {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.all(0.8),
+                padding: const EdgeInsets.all(0.8),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -51,7 +51,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                       onTap: () {
                         showModalBottomSheet(
                             context: context,
-                            builder: (context) => Container(
+                            builder: (context) => SizedBox(
                                   height: 160,
                                   width: double.infinity,
                                   child: Column(children: [
@@ -85,7 +85,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                                                   "asset/gallery.png",
                                                   fit: BoxFit.cover,
                                                 ),
-                                                Text("from gallery"),
+                                                const Text("from gallery"),
                                               ],
                                             ),
                                           ),
@@ -112,7 +112,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                                                   "asset/camera.png",
                                                   fit: BoxFit.cover,
                                                 ),
-                                                Text("from gallery"),
+                                                const Text("from gallery"),
                                               ],
                                             ),
                                           ),
@@ -129,13 +129,13 @@ class _AccountViewState extends State<AccountView> with Crud {
                           shape: BoxShape.circle,
                           color: Colors.teal.withOpacity(0.20),
                         ),
-                        child: Icon(
+                        child: const Icon(
                           Icons.person,
                           color: Colors.teal,
                         ),
                       ),
                     ),
-                    Container(
+                    SizedBox(
                       width: 812 * 200 / Get.height,
                       height: 812 * 100 / Get.height,
                       child: Column(
@@ -146,7 +146,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                             shardprefs.getString("u_id") == null
                                 ? 'loading name'
                                 : shardprefs.getString("username").toString(),
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 26, fontWeight: FontWeight.w500),
                           ),
                           Text(
@@ -158,7 +158,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                               onTap: () {
                                 Get.to(Home());
                               },
-                              child: Text(
+                              child: const Text(
                                 "change password",
                                 style:
                                     TextStyle(fontSize: 18, color: Colors.red),
@@ -169,10 +169,10 @@ class _AccountViewState extends State<AccountView> with Crud {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10,
               ),
-              Container(
+              SizedBox(
                 width: double.infinity,
                 child: Column(children: [
                   ListTile(
@@ -180,8 +180,8 @@ class _AccountViewState extends State<AccountView> with Crud {
                       Get.to(Home());
                     },
                     leading: Image.asset("asset/svg/editprofile.png"),
-                    title: Text("Edit Profile"),
-                    trailing: RotatedBox(
+                    title: const Text("Edit Profile"),
+                    trailing: const RotatedBox(
                       quarterTurns: 2,
                       child: Icon(
                         Icons.arrow_back_ios_new_outlined,
@@ -193,8 +193,8 @@ class _AccountViewState extends State<AccountView> with Crud {
                       Get.to(Home());
                     },
                     leading: Image.asset("asset/svg/editprofile.png"),
-                    title: Text("Tracking Order"),
-                    trailing: RotatedBox(
+                    title: const Text("Tracking Order"),
+                    trailing: const RotatedBox(
                       quarterTurns: 2,
                       child: Icon(
                         Icons.arrow_back_ios_new_outlined,
@@ -206,8 +206,8 @@ class _AccountViewState extends State<AccountView> with Crud {
                       Get.to(Home());
                     },
                     leading: Image.asset("asset/svg/editprofile.png"),
-                    title: Text("Notifications"),
-                    trailing: RotatedBox(
+                    title: const Text("Notifications"),
+                    trailing: const RotatedBox(
                       quarterTurns: 2,
                       child: Icon(
                         Icons.arrow_back_ios_new_outlined,
@@ -219,12 +219,12 @@ class _AccountViewState extends State<AccountView> with Crud {
                       await shardprefs.clear();
                       Get.offAll(Login());
                     },
-                    leading: Icon(
+                    leading: const Icon(
                       Icons.logout,
                       color: Colors.teal,
                     ),
-                    title: Text("Sign out"),
-                    trailing: RotatedBox(
+                    title: const Text("Sign out"),
+                    trailing: const RotatedBox(
                       quarterTurns: 2,
                       child: Icon(
                         Icons.arrow_back_ios_new_outlined,

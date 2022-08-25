@@ -13,7 +13,7 @@ import '../../components/valid.dart';
 import '../../constant/linkapi.dart';
 
 class Login extends StatefulWidget {
-  Login({Key? key}) : super(key: key);
+  const Login({Key? key}) : super(key: key);
 
   @override
   State<Login> createState() => _LoginState();
@@ -51,7 +51,7 @@ class _LoginState extends State<Login> {
             AwesomeDialog(
               context: context,
               title: "تنبيه ",
-              body: Text("البريد الالكترونى خطأ او كلمه المرور"),
+              body: const Text("البريد الالكترونى خطأ او كلمه المرور"),
             ).show();
           });
         }
@@ -65,9 +65,9 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.all(5),
+        padding: const EdgeInsets.all(5),
         child: isLoading == true
-            ? Center(
+            ? const Center(
                 child: CircularProgressIndicator(),
               )
             : ListView(children: [
@@ -77,7 +77,7 @@ class _LoginState extends State<Login> {
                       children: [
                         Image.network(
                             "https://media.mktg.workday.com/is/image/workday/illustration-people-login?fmt=png-alpha&wid=1000"),
-                        Text(
+                        const Text(
                           "Login",
                           style: TextStyle(
                               fontSize: 40,
@@ -93,9 +93,9 @@ class _LoginState extends State<Login> {
                           },
                           mycontroller: email,
                           hinttype: 'Type Your Email',
-                          iname: Icon(Icons.email_outlined),
+                          iname: const Icon(Icons.email_outlined),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         CustomTextForm(
@@ -104,9 +104,9 @@ class _LoginState extends State<Login> {
                           },
                           mycontroller: password,
                           hinttype: 'Type Your password',
-                          iname: Icon(Icons.vpn_key),
+                          iname: const Icon(Icons.vpn_key),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         TextButton(
@@ -116,8 +116,8 @@ class _LoginState extends State<Login> {
                                   MaterialPageRoute(
                                       builder: (context) => Home()));
                             },
-                            child: Text("Forgot Password?")),
-                        SizedBox(
+                            child: const Text("Forgot Password?")),
+                        const SizedBox(
                           height: 8,
                         ),
                         smallbutton(
@@ -125,7 +125,7 @@ class _LoginState extends State<Login> {
                             onPreased: () async {
                               await login();
                             }),
-                        SizedBox(
+                        const SizedBox(
                           height: 6,
                         ),
                         smallbutton(

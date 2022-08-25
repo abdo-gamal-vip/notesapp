@@ -25,9 +25,11 @@ class TopNotes extends StatelessWidget {
               color: Colors.yellow,
               borderRadius: BorderRadius.circular(20),
               image: DecorationImage(
-                  image: NetworkImage("$imageroot/${img}"), fit: BoxFit.fill),
+                  image: NetworkImage("$imageroot/$img"), fit: BoxFit.fill),
             )),
         Positioned(
+          bottom: 0,
+          left: 0,
           child: Container(
               height: size.height * 0.06,
               width: size.width * 0.70,
@@ -45,10 +47,11 @@ class TopNotes extends StatelessWidget {
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 )),
               )),
-          bottom: 0,
-          left: 0,
         ),
         Positioned(
+          top: 0,
+          bottom: 150,
+          right: 0,
           child: Container(
               height: size.height * 0.20,
               width: size.width * 0.10,
@@ -69,11 +72,10 @@ class TopNotes extends StatelessWidget {
                       color: Colors.black),
                 )),
               )),
-          top: 0,
-          bottom: 150,
-          right: 0,
         ),
         Positioned(
+          top: 0,
+          right: 0,
           child: Container(
             child: Padding(
                 padding: const EdgeInsets.all(4),
@@ -82,8 +84,6 @@ class TopNotes extends StatelessWidget {
                   color: Colors.white,
                 )),
           ),
-          top: 0,
-          right: 0,
         )
       ],
     );

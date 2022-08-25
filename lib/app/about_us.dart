@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
-class aboutUs extends StatelessWidget {
-  const aboutUs({Key? key}) : super(key: key);
+class AboutUs extends StatelessWidget {
+  const AboutUs({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
+      body: SizedBox(
         width: double.infinity,
         child: Card(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("تم التطوير بواسطه عبدالرحمن جمال "),
-              Text("TechShow كل الحقوق محفوظه لصالح شركه "),
+              const Text("تم التطوير بواسطه عبدالرحمن جمال "),
+              const Text("TechShow كل الحقوق محفوظه لصالح شركه "),
               IconButton(
-                icon: Icon(Icons.arrow_back),
+                icon: const Icon(Icons.arrow_back),
                 onPressed: () {
                   Navigator.pop(context);
                 },

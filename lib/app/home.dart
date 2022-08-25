@@ -25,15 +25,15 @@ class Home extends StatefulWidget with Crud {
 
 class _HomeState extends State<Home> {
   List<Widget> item = [
-    Icon(
+    const Icon(
       Icons.home,
       size: 30,
     ),
-    Icon(
+    const Icon(
       Icons.bookmark_add,
       size: 30,
     ),
-    Icon(
+    const Icon(
       Icons.person,
       size: 30,
     ),
@@ -43,16 +43,16 @@ class _HomeState extends State<Home> {
     Widget widget;
     switch (index) {
       case 0:
-        widget = ViewNotes();
+        widget = const ViewNotes();
         break;
       case 1:
-        widget = BookMarks();
+        widget = const BookMarks();
         break;
       case 2:
-        widget = AccountView();
+        widget = const AccountView();
         break;
       default:
-        widget = ViewNotes();
+        widget = const ViewNotes();
     }
     return widget;
   }
@@ -78,7 +78,7 @@ class _HomeState extends State<Home> {
           IconButton(
               onPressed: (() {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => aboutUs()));
+                    .push(MaterialPageRoute(builder: (context) => const AboutUs()));
               }),
               icon: const Icon(Icons.info_outline)),
           Padding(

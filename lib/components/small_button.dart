@@ -13,7 +13,7 @@ class smallbutton extends StatelessWidget {
         onPressed: onPreased,
         child: Text(
           txt,
-          style: TextStyle(fontSize: 18),
+          style: const TextStyle(fontSize: 18),
         ));
   }
 }

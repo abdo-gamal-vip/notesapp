@@ -20,13 +20,14 @@ class ViewNotes extends StatefulWidget {
 
 class _ViewNotesState extends State<ViewNotes> with Crud {
   Future viewNote() async {
-    Duration(milliseconds: 50);
+    const Duration(milliseconds: 50);
     var response = await postRequset(viewslink, {
       "u_id": shardprefs.getString("u_id"),
     });
     return await response;
   }
 
+  @override
   void initState() {
     viewNote();
     super.initState();
@@ -47,12 +48,13 @@ class _ViewNotesState extends State<ViewNotes> with Crud {
               future: viewNote(),
               builder: (BuildContext context, AsyncSnapshot snapshot) {
                 if (snapshot.hasData) {
-                  if (snapshot.data['status'] == 'fail')
+                  if (snapshot.data['status'] == 'fail') {
                     return const Center(
                         child: Text(
                       "لا يوجد اى ملاحظات جديده \n من فضلك ادخل ملاحظه",
                       style: TextStyle(fontSize: 20),
                     ));
+                  }
                   return ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -71,9 +73,9 @@ class _ViewNotesState extends State<ViewNotes> with Crud {
                         );
                       });
                 }
-                if (snapshot.connectionState == ConnectionState.waiting) ;
+                if (snapshot.connectionState == ConnectionState.waiting) {}
                 {
-                  return Center(
+                  return const Center(
                     child: CircularProgressIndicator(),
                   );
                 }
@@ -83,15 +85,15 @@ class _ViewNotesState extends State<ViewNotes> with Crud {
                 future: viewNote(),
                 builder: (BuildContext context, AsyncSnapshot snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
                   if (snapshot.data['status'] == 'fail') {
-                    return Text("لا يوجد ملاحظات");
+                    return const Text("لا يوجد ملاحظات");
                   }
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
+                    return const Center(
                       child: CircularProgressIndicator(),
                     );
                   }
@@ -100,16 +102,14 @@ class _ViewNotesState extends State<ViewNotes> with Crud {
                     itemBuilder: ((context, index, realIndex) {
                       return TopNotes(
                           size: MediaQuery.of(context).size,
-                          img: snapshot.data["data"][index]["n_image"] == null
-                              ? "text.png"
-                              : snapshot.data["data"][index]["n_image"],
+                          img: snapshot.data["data"][index]["n_image"] ?? "text.png",
                           content: "",
                           title: snapshot.data["data"][index]["n_title"]);
                     }),
                     options: CarouselOptions(
                         enableInfiniteScroll: false,
                         enlargeCenterPage: true,
-                        autoPlayAnimationDuration: Duration(seconds: 1)),
+                        autoPlayAnimationDuration: const Duration(seconds: 1)),
                   );
                 }),
           ],

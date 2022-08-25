@@ -177,7 +177,7 @@ class _editNoteState extends State<editNote> with Crud {
                                                           "asset/gallery.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        Text("from gallery"),
+                                                        const Text("from gallery"),
                                                       ],
                                                     ),
                                                   ),
@@ -209,7 +209,7 @@ class _editNoteState extends State<editNote> with Crud {
                                                           "asset/camera.png",
                                                           fit: BoxFit.cover,
                                                         ),
-                                                        Text("from gallery"),
+                                                        const Text("from gallery"),
                                                       ],
                                                     ),
                                                   ),
@@ -219,13 +219,13 @@ class _editNoteState extends State<editNote> with Crud {
                                           ]),
                                         ));
                               },
-                              child: Text(
+                              child: const Text(
                                 "Choose Image File",
                                 style: TextStyle(
                                     fontSize: 18, color: Colors.white),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 20,
                             ),
                             Row(

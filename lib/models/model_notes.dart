@@ -24,13 +24,13 @@ class NotesModel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['n_id'] = this.nId;
-    data['n_title'] = this.nTitle;
-    data['n_content'] = this.nContent;
-    data['n_image'] = this.nImage;
-    data['n_users'] = this.nUsers;
-    data['n_bookmark'] = this.n_bookmark;
+    final Map<String, dynamic> data = Map<String, dynamic>();
+    data['n_id'] = nId;
+    data['n_title'] = nTitle;
+    data['n_content'] = nContent;
+    data['n_image'] = nImage;
+    data['n_users'] = nUsers;
+    data['n_bookmark'] = n_bookmark;
 
     return data;
   }

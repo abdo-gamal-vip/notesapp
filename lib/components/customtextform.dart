@@ -14,17 +14,17 @@ class CustomTextForm extends StatelessWidget {
   String iconname = "";
   final String? Function(String?) valid;
   final TextEditingController mycontroller;
-  Widget iname = Icon(Icons.person);
+  Widget iname = const Icon(Icons.person);
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       validator: valid,
       controller: mycontroller,
       decoration: InputDecoration(
-        contentPadding: EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-        hintText: "$hinttype",
+        contentPadding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+        hintText: hinttype,
         suffixIcon: iname,
-        border: OutlineInputBorder(
+        border: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.black),
             borderRadius: BorderRadius.all(Radius.circular(10))),
       ),

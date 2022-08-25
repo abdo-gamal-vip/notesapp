@@ -14,18 +14,18 @@ import '../../components/customtextform.dart';
 import '../../components/small_button.dart';
 
 class Signup extends StatefulWidget {
-  Signup({Key? key}) : super(key: key);
+  const Signup({Key? key}) : super(key: key);
   @override
   State<Signup> createState() => _SignupState();
 }
 
 class _SignupState extends State<Signup> {
-  TextEditingController username = new TextEditingController();
-  TextEditingController email = new TextEditingController();
-  TextEditingController password = new TextEditingController();
+  TextEditingController username = TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   GlobalKey<FormState> formkey = GlobalKey<FormState>();
   bool isLoading = true;
-  Crud _crud = Crud();
+  final Crud _crud = Crud();
 
   signup() async {
     if (formkey.currentState!.validate()) {
@@ -57,11 +57,11 @@ class _SignupState extends State<Signup> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: isLoading == false
-          ? (Center(
+          ? (const Center(
               child: CircularProgressIndicator(),
             ))
           : Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               child: ListView(children: [
                 Form(
                     key: formkey,
@@ -69,7 +69,7 @@ class _SignupState extends State<Signup> {
                       children: [
                         Image.network(
                             "https://media.mktg.workday.com/is/image/workday/illustration-people-login?fmt=png-alpha&wid=1000"),
-                        Text(
+                        const Text(
                           "SIGNUP",
                           style: TextStyle(
                               fontSize: 40,
@@ -82,9 +82,9 @@ class _SignupState extends State<Signup> {
                           },
                           mycontroller: username,
                           hinttype: 'Type Your Username',
-                          iname: Icon(Icons.person),
+                          iname: const Icon(Icons.person),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         CustomTextForm(
@@ -96,9 +96,9 @@ class _SignupState extends State<Signup> {
                           },
                           mycontroller: email,
                           hinttype: 'Type Your Email',
-                          iname: Icon(Icons.email_outlined),
+                          iname: const Icon(Icons.email_outlined),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         CustomTextForm(
@@ -107,9 +107,9 @@ class _SignupState extends State<Signup> {
                           },
                           mycontroller: password,
                           hinttype: 'Type Your Password',
-                          iname: Icon(Icons.password_outlined),
+                          iname: const Icon(Icons.password_outlined),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 8,
                         ),
                         smallbutton(
@@ -132,7 +132,7 @@ class _SignupState extends State<Signup> {
                                         builder: (context) => Login()));
                               });
                             }),
-                        SizedBox(
+                        const SizedBox(
                           height: 6,
                         ),
                         smallbutton(
