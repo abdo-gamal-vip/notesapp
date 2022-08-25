@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:notesapp/components/crud.dart';
 import '../components/cardnote.dart';
 import '../constant/linkapi.dart';
+import '../main.dart';
 import '../models/model_notes.dart';
 
 class BookMarks extends StatefulWidget {
-  const BookMarks({Key? key}) : super(key: key);
+  const BookMarks({Key? key, this.notes}) : super(key: key);
+  final notes;
 
   @override
   State<BookMarks> createState() => _BookMarksState();
@@ -15,7 +17,7 @@ class _BookMarksState extends State<BookMarks> with Crud {
   Future viewNoteBook() async {
     const Duration(milliseconds: 50);
     var response = await postRequset(viewsbooklink, {
-      "n_users": "45",
+      "n_users": shardprefs.getString("u_id").toString(),
       "n_bookmark": "true",
     });
     return await response;

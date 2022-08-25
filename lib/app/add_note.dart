@@ -43,12 +43,16 @@ class _AdddNoteState extends State<AdddNote> with Crud {
             "content": content.text,
           },
           myfile!);
-      Navigator.of(context).pushAndRemoveUntil(
-          MaterialPageRoute(builder: (context) => Home()), (route) => false);
-      isLoading = false;
-      setState(() {});
-      print(response);
-      return response;
+      if (response['status'] == "success") {
+        shardprefs.setString("n_users", response["data"]["n_users"].toString());
+        print(shardprefs.getString("n_users"));
+        Navigator.of(context).pushAndRemoveUntil(
+            MaterialPageRoute(builder: (context) => Home()), (route) => false);
+        isLoading = false;
+        setState(() {});
+        print(response);
+        return response;
+      }
     }
   }
 

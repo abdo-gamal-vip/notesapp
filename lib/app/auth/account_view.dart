@@ -8,7 +8,6 @@ import 'package:notesapp/app/auth/login.dart';
 import 'package:notesapp/app/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
-
 import '../../constant/linkapi.dart';
 
 class AccountView extends StatefulWidget {
@@ -26,9 +25,13 @@ class _AccountViewState extends State<AccountView> with Crud {
         addprofilelink,
         {
           "u_id": shardprefs.getString("u_id"),
-          "imagename": widget.notes["profilepic"].toString()
         },
         myfile);
+    if (response['status'] == ['success']) {
+      setState(() {
+        shardprefs.setString("profilepic", response["data"]["profilepic"]);
+      });
+    }
     print("object");
   }
 
@@ -100,6 +103,10 @@ class _AccountViewState extends State<AccountView> with Crud {
                                                       source:
                                                           ImageSource.camera);
                                               myfile = File(xfile!.path);
+                                              setState(() {
+                                                uploadprofilepic();
+                                                print("done");
+                                              });
                                             },
                                             child: Column(
                                               crossAxisAlignment:
@@ -122,21 +129,23 @@ class _AccountViewState extends State<AccountView> with Crud {
                                 ));
                       },
                       child: Container(
-                        height: 812 * 120 / Get.height,
-                        width: 812 * 120 / Get.height,
-                        decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Colors.teal.withOpacity(0.20),
-                        ),
-                        child: const Icon(
-                          Icons.person,
-                          color: Colors.teal,
-                        ),
-                      ),
+                          height: 812 * 120 / Get.height,
+                          width: 812 * 120 / Get.height,
+                          decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.teal.withOpacity(0.20),
+                              image: DecorationImage(
+                                  fit: BoxFit.fill,
+                                  image: NetworkImage(
+                                      "$imageroot/${shardprefs.getString("profilepic")}"))),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [],
+                          )),
                     ),
                     SizedBox(
                       width: 812 * 200 / Get.height,
-                      height: 812 * 100 / Get.height,
+                      height: 812 * 90 / Get.height,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -162,6 +171,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                                 style:
                                     TextStyle(fontSize: 18, color: Colors.red),
                               )),
+                          Text("upload profile pic"),
                         ],
                       ),
                     ),

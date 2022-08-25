@@ -43,6 +43,9 @@ class _LoginState extends State<Login> {
           shardprefs.setString("u_id", response["data"]["u_id"].toString());
           shardprefs.setString("username", response["data"]["username"]);
           shardprefs.setString("password", response["data"]["password"]);
+          shardprefs.setString("email", response["data"]["email"]);
+
+          shardprefs.setString("profilepic", response["data"]["profilepic"]);
           Navigator.of(context)
               .pushNamedAndRemoveUntil("home", (route) => false);
         } else {

@@ -38,7 +38,7 @@ class _SignupState extends State<Signup> {
         if (response['status'] == "success") {
           print("sucess");
           Navigator.of(context)
-              .pushNamedAndRemoveUntil("home", (route) => false);
+              .pushNamedAndRemoveUntil("login", (route) => false);
         } else {
           print("signup failled");
         }
@@ -111,10 +111,7 @@ class _SignupState extends State<Signup> {
                             txt: "Create Account",
                             onPreased: () {
                               setState(() {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => Login()));
+                                signup();
                               });
                             }),
                         Smallbutton(
