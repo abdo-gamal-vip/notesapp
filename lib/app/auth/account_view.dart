@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables, avoid_print, unused_local_variable, prefer_const_constructors
 
 import 'dart:io';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -27,12 +28,20 @@ class _AccountViewState extends State<AccountView> with Crud {
           "u_id": shardprefs.getString("u_id"),
         },
         myfile);
-    if (response['status'] == ['success']) {
+    if (myfile != null) {
       setState(() {
+        AwesomeDialog(
+            context: context,
+            title: " تم رفع الصوره",
+            body: Center(
+              child: Text(
+                  "تم رفع الصوره بنجاح لتظهر الصوره الجديده برجاء اعاده تسجيل الدخول",
+                  textAlign: TextAlign.center),
+            )).show();
         shardprefs.setString("profilepic", response["data"]["profilepic"]);
       });
     }
-    print("object");
+    print(response);
   }
 
   @override
@@ -71,9 +80,11 @@ class _AccountViewState extends State<AccountView> with Crud {
                                                   .pickImage(
                                                       source:
                                                           ImageSource.gallery);
+                                              Navigator.of(context).pop();
                                               myfile = File(xfile!.path);
-                                              setState(() {
-                                                uploadprofilepic();
+                                              setState(() async {
+                                                await uploadprofilepic();
+
                                                 print("done");
                                               });
                                             },
@@ -102,6 +113,7 @@ class _AccountViewState extends State<AccountView> with Crud {
                                                   .pickImage(
                                                       source:
                                                           ImageSource.camera);
+                                              Navigator.of(context).pop();
                                               myfile = File(xfile!.path);
                                               setState(() {
                                                 uploadprofilepic();
@@ -140,7 +152,13 @@ class _AccountViewState extends State<AccountView> with Crud {
                                       "$imageroot/${shardprefs.getString("profilepic")}"))),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.end,
-                            children: [],
+                            // ignore: prefer_const_literals_to_create_immutables
+                            children: [
+                              Icon(
+                                Icons.upload,
+                                color: Colors.white,
+                              )
+                            ],
                           )),
                     ),
                     SizedBox(
@@ -225,8 +243,11 @@ class _AccountViewState extends State<AccountView> with Crud {
                   ),
                   ListTile(
                     onTap: () async {
-                      await shardprefs.clear();
-                      Get.offAll(Login());
+                      setState(() {
+                        shardprefs.clear();
+                        Navigator.of(context)
+                            .pushNamedAndRemoveUntil("login", (route) => false);
+                      });
                     },
                     leading: const Icon(
                       Icons.logout,

@@ -170,6 +170,8 @@ class _AdddNoteState extends State<AdddNote> with Crud {
                                                               .pickImage(
                                                                   source: ImageSource
                                                                       .gallery);
+                                                      Navigator.of(context)
+                                                          .pop();
                                                       myfile =
                                                           File(xfile!.path);
                                                     },
@@ -203,6 +205,8 @@ class _AdddNoteState extends State<AdddNote> with Crud {
                                                                   source:
                                                                       ImageSource
                                                                           .camera);
+                                                      Navigator.of(context)
+                                                          .pop();
                                                       myfile =
                                                           File(xfile!.path);
                                                     },
