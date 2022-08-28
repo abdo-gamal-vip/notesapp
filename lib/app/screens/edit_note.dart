@@ -1,11 +1,9 @@
-// ignore_for_file: sized_box_for_whitespace, prefer_typing_uninitialized_variables, duplicate_ignore
+// ignore_for_file: sized_box_for_whitespace, prefer_typing_uninitialized_variables, duplicate_ignore, avoid_print
 
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:shared_preferences/shared_preferences.dart';
-import '../../constant/linkapi.dart';
 import '../../constant/linkapi.dart';
 
 // ignore: camel_case_types

@@ -1,6 +1,7 @@
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 import 'package:notesapp/app/screens/about_us.dart';
 import 'package:notesapp/app/auth/account_view.dart';
@@ -8,7 +9,6 @@ import 'package:notesapp/app/screens/book_mark.dart';
 import 'package:notesapp/app/screens/task_view.dart';
 import 'package:notesapp/app/screens/view_note.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/main.dart';
 
 class Home extends StatefulWidget with Crud {
   Home({Key? key}) : super(key: key);

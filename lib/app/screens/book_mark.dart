@@ -1,13 +1,11 @@
+// ignore_for_file: prefer_typing_uninitialized_variables
+
 import 'package:flutter/material.dart';
 import 'package:notesapp/components/cardnote.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
 import 'package:notesapp/models/model_notes.dart';
-import '../components/cardnote.dart';
-import '../constant/linkapi.dart';
-import '../main.dart';
-import '../models/model_notes.dart';
 
 class BookMarks extends StatefulWidget {
   const BookMarks({Key? key, this.notes}) : super(key: key);
