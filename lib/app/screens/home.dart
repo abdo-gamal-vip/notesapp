@@ -9,6 +9,7 @@ import 'package:notesapp/app/screens/book_mark.dart';
 import 'package:notesapp/app/screens/task_view.dart';
 import 'package:notesapp/app/screens/view_note.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/themes_service/themes_service.dart';
 
 class Home extends StatefulWidget with Crud {
   Home({Key? key}) : super(key: key);
@@ -92,7 +93,11 @@ class _HomeState extends State<Home> {
 
 _AppBar(BuildContext context) {
   return AppBar(
-    leading: GestureDetector(onTap: () {}, child: Icon(Icons.dark_mode)),
+    leading: GestureDetector(
+        onTap: () {
+          ThemesService().swithTheme();
+        },
+        child: Icon(Icons.dark_mode)),
     actions: [
       IconButton(
           onPressed: (() {
