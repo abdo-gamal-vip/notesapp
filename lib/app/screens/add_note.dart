@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:notesapp/app/home.dart';
+import 'package:notesapp/app/screens/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/constant/linkapi.dart';
 import 'package:notesapp/main.dart';
