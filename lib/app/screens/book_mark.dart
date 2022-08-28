@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:notesapp/components/cardnote.dart';
 import 'package:notesapp/components/crud.dart';
-<<<<<<< HEAD:lib/app/book_mark.dart
+import 'package:notesapp/constant/linkapi.dart';
+import 'package:notesapp/main.dart';
+import 'package:notesapp/models/model_notes.dart';
 import '../components/cardnote.dart';
 import '../constant/linkapi.dart';
 import '../main.dart';
 import '../models/model_notes.dart';
-=======
-import '../../components/cardnote.dart';
-import '../../constant/linkapi.dart';
-import '../../models/model_notes.dart';
->>>>>>> c2352e7e199cfa314ac8ab5e0d5ea63d40cd78e8:lib/app/screens/book_mark.dart
 
 class BookMarks extends StatefulWidget {
   const BookMarks({Key? key, this.notes}) : super(key: key);
