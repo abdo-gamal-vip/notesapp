@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:notesapp/app/home.dart';
+import 'package:notesapp/app/screens/home.dart';
+import 'package:notesapp/constant/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'app/auth/signup.dart';
 import 'app/auth/login.dart';
@@ -17,6 +18,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        theme: Themes.light,
+        darkTheme: Themes.dark,
+        themeMode: ThemeMode.light,
         debugShowCheckedModeBanner: false,
         initialRoute: shardprefs.getString("u_id") == null ? 'login' : 'home',
         routes: {

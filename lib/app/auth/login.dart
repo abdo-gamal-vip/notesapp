@@ -3,7 +3,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:notesapp/app/auth/signup.dart';
-import 'package:notesapp/app/home.dart';
+import 'package:notesapp/app/screens/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
 import '../../components/customtextform.dart';

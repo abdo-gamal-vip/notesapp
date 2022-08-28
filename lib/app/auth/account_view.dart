@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/app/auth/login.dart';
-import 'package:notesapp/app/home.dart';
+import 'package:notesapp/app/screens/home.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/main.dart';
 
