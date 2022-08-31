@@ -9,6 +9,7 @@ import 'package:notesapp/app/screens/book_mark.dart';
 import 'package:notesapp/app/screens/task_view.dart';
 import 'package:notesapp/app/screens/view_note.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/constant/themes.dart';
 import 'package:notesapp/themes_service/themes_service.dart';
 
 class Home extends StatefulWidget with Crud {
@@ -58,10 +59,19 @@ class _HomeState extends State<Home> {
     return Scaffold(
       extendBody: true,
       floatingActionButton: SpeedDial(
-          backgroundColor: Colors.teal,
+          backgroundColor: ThemesService().box.read('isDarkMode')
+              ? Colors.black38
+              : Colors.teal,
           animatedIcon: AnimatedIcons.menu_close,
           children: [
-            SpeedDialChild(child: Icon(Icons.add), label: "add Note"),
+            SpeedDialChild(
+                child: Icon(
+                  Icons.add,
+                  color: ThemesService().box.read('isDarkMode')
+                      ? Colors.white
+                      : Colors.teal,
+                ),
+                label: "add Note"),
             SpeedDialChild(
                 child: Icon(Icons.task),
                 label: "add Task",
@@ -79,7 +89,9 @@ class _HomeState extends State<Home> {
         },
         height: 70,
         backgroundColor: Colors.transparent,
-        color: Colors.teal,
+        color: ThemesService().box.read('isDarkMode')
+            ? Colors.black38
+            : Colors.teal,
       ),
       body: Container(
         padding: const EdgeInsets.all(5),

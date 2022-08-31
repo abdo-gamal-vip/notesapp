@@ -44,6 +44,9 @@ dependencies:
   curved_navigation_bar: ^1.0.3
   flutter_speed_dial: ^6.0.0
   get_storage:
+  flutter_local_notifications: ^9.9.0
+  flutter_native_timezone: ^2.0.0 
+
 
 dev_dependencies:
   flutter_test:

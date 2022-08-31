@@ -69,8 +69,7 @@ class _editNoteState extends State<editNote> with Crud {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.teal,
-          title: const Text("add Note"),
+          title: const Text("add Notee"),
         ),
         body: isLoading == true
             ? const Center(
