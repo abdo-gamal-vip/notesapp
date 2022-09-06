@@ -88,33 +88,6 @@ class _CardNotesState extends State<CardNotes> with Crud {
                             title: const Text("Delete"),
                             content: const Text(
                                 "Are you sure want to delete this note?"),
-                            actions: [
-                              FlatButton(
-                                child: const Text("Yes"),
-                                onPressed: () async {
-                                  setState(() {
-                                    if (XFile == null) {
-                                      print("with out");
-                                      deletwithoutphoto(widget.nn_id, context);
-
-                                      Navigator.pop(context);
-                                    } else {
-                                      print("with ");
-                                      deletwithphoto(widget.nn_id, context,
-                                          widget.noteModel.nImage.toString());
-
-                                      Navigator.pop(context);
-                                    }
-                                  });
-                                },
-                              ),
-                              FlatButton(
-                                child: const Text("No"),
-                                onPressed: () {
-                                  Navigator.pop(context);
-                                },
-                              ),
-                            ],
                           );
                         });
                   },

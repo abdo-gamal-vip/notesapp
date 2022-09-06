@@ -9,7 +9,6 @@ import 'package:notesapp/app/screens/book_mark.dart';
 import 'package:notesapp/app/screens/task_view.dart';
 import 'package:notesapp/app/screens/view_note.dart';
 import 'package:notesapp/components/crud.dart';
-import 'package:notesapp/constant/themes.dart';
 import 'package:notesapp/themes_service/themes_service.dart';
 
 class Home extends StatefulWidget with Crud {
@@ -48,7 +47,7 @@ class _HomeState extends State<Home> {
         widget = const AccountView();
         break;
       default:
-        widget = const ViewNotes();
+        widget = const AccountView();
     }
     return widget;
   }
@@ -59,17 +58,13 @@ class _HomeState extends State<Home> {
     return Scaffold(
       extendBody: true,
       floatingActionButton: SpeedDial(
-          backgroundColor: ThemesService().box.read('isDarkMode')
-              ? Colors.black38
-              : Colors.teal,
+          backgroundColor: Colors.teal,
           animatedIcon: AnimatedIcons.menu_close,
           children: [
             SpeedDialChild(
                 child: Icon(
                   Icons.add,
-                  color: ThemesService().box.read('isDarkMode')
-                      ? Colors.white
-                      : Colors.teal,
+                  color: Colors.teal,
                 ),
                 label: "add Note"),
             SpeedDialChild(
@@ -89,9 +84,7 @@ class _HomeState extends State<Home> {
         },
         height: 70,
         backgroundColor: Colors.transparent,
-        color: ThemesService().box.read('isDarkMode')
-            ? Colors.black38
-            : Colors.teal,
+        color: Colors.teal,
       ),
       body: Container(
         padding: const EdgeInsets.all(5),
