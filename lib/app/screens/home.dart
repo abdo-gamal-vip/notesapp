@@ -3,12 +3,14 @@
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:get/get.dart';
 import 'package:notesapp/app/screens/about_us.dart';
 import 'package:notesapp/app/auth/account_view.dart';
 import 'package:notesapp/app/screens/book_mark.dart';
 import 'package:notesapp/app/screens/task_view.dart';
 import 'package:notesapp/app/screens/view_note.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/themes_service/notify_services.dart';
 import 'package:notesapp/themes_service/themes_service.dart';
 
 class Home extends StatefulWidget with Crud {
@@ -18,7 +20,16 @@ class Home extends StatefulWidget with Crud {
   State<Home> createState() => _HomeState();
 }
 
+var notifyHelper;
+
 class _HomeState extends State<Home> {
+  void initState() {
+    super.initState();
+    notifyHelper = NotifyHelper();
+    notifyHelper.initializeNotification();
+    notifyHelper.requestIOSPermissions();
+  }
+
   List<Widget> item = [
     const Icon(
       Icons.home,
@@ -101,6 +112,12 @@ _AppBar(BuildContext context) {
     leading: GestureDetector(
         onTap: () {
           ThemesService().swithTheme();
+          print("hna");
+          notifyHelper.displayNotification(
+            title: "theme changed",
+            body: Get.isDarkMode ? "active light mode" : "active dark mode",
+          );
+          notifyHelper.scheduledNotification();
         },
         child: Icon(Icons.dark_mode)),
     actions: [
