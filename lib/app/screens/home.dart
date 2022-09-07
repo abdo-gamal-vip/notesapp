@@ -10,6 +10,8 @@ import 'package:notesapp/app/screens/book_mark.dart';
 import 'package:notesapp/app/screens/task_view.dart';
 import 'package:notesapp/app/screens/view_note.dart';
 import 'package:notesapp/components/crud.dart';
+import 'package:notesapp/constant/linkapi.dart';
+import 'package:notesapp/main.dart';
 import 'package:notesapp/themes_service/notify_services.dart';
 import 'package:notesapp/themes_service/themes_service.dart';
 
@@ -36,6 +38,10 @@ class _HomeState extends State<Home> {
       size: 30,
     ),
     const Icon(
+      Icons.task,
+      size: 30,
+    ),
+    const Icon(
       Icons.bookmark_add,
       size: 30,
     ),
@@ -52,10 +58,13 @@ class _HomeState extends State<Home> {
         widget = const ViewNotes();
         break;
       case 1:
-        widget = const BookMarks();
+        widget = const TaskView();
         break;
       case 2:
         widget = const AccountView();
+        break;
+      case 3:
+        widget = const BookMarks();
         break;
       default:
         widget = const AccountView();
@@ -128,12 +137,18 @@ _AppBar(BuildContext context) {
           }),
           icon: const Icon(Icons.info_outline)),
       Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: IconButton(
-          icon: const Icon(Icons.exit_to_app),
-          onPressed: () {},
-        ),
-      )
+          padding: const EdgeInsets.all(8.0),
+          child: Container(
+            height: 20,
+            width: 40,
+            decoration: BoxDecoration(
+                color: Colors.white,
+                shape: BoxShape.circle,
+                image: DecorationImage(
+                    image: NetworkImage(
+                        "$imageroot/${shardprefs.getString("profilepic")}"),
+                    fit: BoxFit.cover)),
+          ))
     ],
     title: const Text("SMART NOTE"),
   );
