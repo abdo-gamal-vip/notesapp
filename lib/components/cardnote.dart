@@ -1,7 +1,6 @@
 // ignore_for_file: must_be_immutable, non_constant_identifier_names, avoid_print, deprecated_member_use, unnecessary_null_comparison
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:notesapp/components/crud.dart';
 import 'package:notesapp/models/model_notes.dart';
 import '../constant/linkapi.dart';
@@ -84,6 +83,7 @@ class _CardNotesState extends State<CardNotes> with Crud {
                     showDialog(
                         context: context,
                         builder: (context) {
+                          // ignore: prefer_const_constructors
                           return AlertDialog(
                             title: const Text("Delete"),
                             content: const Text(

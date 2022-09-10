@@ -1,6 +1,6 @@
-import 'package:flutter/cupertino.dart';
+// ignore_for_file: unused_local_variable, depend_on_referenced_packages, prefer_const_constructors, avoid_print, unnecessary_new, duplicate_ignore
+
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:timezone/timezone.dart' as tz;
@@ -41,6 +41,7 @@ class NotifyHelper {
 
   displayNotification({required String title, required String body}) async {
     print("doing test");
+    // ignore: unnecessary_new
     var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
         'your channel id', 'your channel name',
         importance: Importance.max, priority: Priority.high);

@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, avoid_print
 
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -22,9 +22,11 @@ class Home extends StatefulWidget with Crud {
   State<Home> createState() => _HomeState();
 }
 
+// ignore: prefer_typing_uninitialized_variables
 var notifyHelper;
 
 class _HomeState extends State<Home> {
+  @override
   void initState() {
     super.initState();
     notifyHelper = NotifyHelper();
