@@ -80,7 +80,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
       extendBody: true,
       floatingActionButton: SpeedDial(
-          backgroundColor: Colors.teal,
+          backgroundColor: context.theme.backgroundColor,
           animatedIcon: AnimatedIcons.menu_close,
           children: [
             SpeedDialChild(
@@ -106,7 +106,7 @@ class _HomeState extends State<Home> {
         },
         height: 70,
         backgroundColor: Colors.transparent,
-        color: Colors.teal,
+        color: context.theme.backgroundColor,
       ),
       body: Container(
         padding: const EdgeInsets.all(5),
@@ -120,6 +120,8 @@ class _HomeState extends State<Home> {
 
 _AppBar(BuildContext context) {
   return AppBar(
+    elevation: 0,
+    backgroundColor: context.theme.backgroundColor,
     leading: GestureDetector(
         onTap: () {
           ThemesService().swithTheme();
@@ -130,7 +132,10 @@ _AppBar(BuildContext context) {
           );
           notifyHelper.scheduledNotification();
         },
-        child: Icon(Icons.dark_mode)),
+        child: Icon(
+          Get.isDarkMode ? Icons.wb_sunny_outlined : Icons.dark_mode,
+          color: Get.isDarkMode ? Colors.white : Colors.black,
+        )),
     actions: [
       IconButton(
           onPressed: (() {
