@@ -13,7 +13,7 @@ const Color darkHeaderClr = Color(0xFF424242);
 
 class Themes {
   static final light = ThemeData(
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.teal[400],
       primarySwatch: Colors.teal,
       brightness: Brightness.light);
   static final dark = ThemeData(
@@ -37,4 +37,20 @@ TextStyle get HeadingStyle {
           fontSize: 30,
           fontWeight: FontWeight.bold,
           color: Get.isDarkMode ? Colors.white : Colors.black));
+}
+
+TextStyle get titleStyle {
+  return GoogleFonts.lato(
+      textStyle: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: Get.isDarkMode ? Colors.white : Colors.black));
+}
+
+TextStyle get subTitleStyle {
+  return GoogleFonts.lato(
+      textStyle: TextStyle(
+          fontSize: 14,
+          fontWeight: FontWeight.w400,
+          color: Get.isDarkMode ? Colors.grey[100] : Colors.grey[600]));
 }
